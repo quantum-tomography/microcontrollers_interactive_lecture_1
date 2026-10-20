@@ -551,10 +551,10 @@
                     <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
                         <h3 class="text-sm font-bold text-slate-900">What is an Integrated Development Environment (IDE)?</h3>
                         <p>
-                            An <strong>Integrated Development Environment (IDE)</strong> bundles all essential software development tools—the text code editor, compiler, assembler, simulator, and programmer interface—into a single unified software suite[cite: 8].
+                            An <strong>Integrated Development Environment (IDE)</strong> bundles all essential software development tools—the text code editor, compiler, assembler, simulator, and programmer interface—into a single unified software suite.
                         </p>
                         <p>
-                            Microcontroller manufacturers typically provide free, tailored IDEs optimized for their chip architectures[cite: 8]. Modern popular choices include:
+                            Microcontroller manufacturers typically provide free, tailored IDEs optimized for their chip architectures. Modern popular choices include:
                         </p>
 
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
@@ -564,7 +564,7 @@
                             </div>
                             <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
                                 <strong class="text-blue-600 block mb-1">MPLAB X IDE</strong>
-                                <span class="text-slate-500">Official suite provided freely by Microchip for PIC, AVR, and SAM series microcontrollers[cite: 8].</span>
+                                <span class="text-slate-500">Official suite provided freely by Microchip for PIC, AVR, and SAM series microcontrollers.</span>
                             </div>
                             <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
                                 <strong class="text-blue-600 block mb-1">STM32CubeIDE</strong>
@@ -584,34 +584,59 @@
                             <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
                                 <span class="font-bold text-slate-900 block mb-1">1. Software Simulator</span>
                                 <p class="text-slate-500 leading-relaxed">
-                                    Executes a virtual software model of the target MCU entirely inside the host PC[cite: 8]. Excellent for validating mathematical algorithms and logic loops without requiring physical circuit boards[cite: 8].
+                                    Executes a virtual software model of the target MCU entirely inside the host PC. Excellent for validating mathematical algorithms and logic loops without requiring physical circuit boards.
                                 </p>
                             </div>
                             <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-200 shadow-sm">
                                 <span class="font-bold text-blue-900 block mb-1">2. Hardware Emulator / In-Circuit Debugger (ICD)</span>
                                 <p class="text-blue-950 leading-relaxed">
-                                    Connects the PC IDE directly to physical silicon running real hardware conditions[cite: 8]. Allows live register inspections, memory dumps, and single-step line-by-line debugging via debug pins (SWD / JTAG)[cite: 8].
+                                    Connects the PC IDE directly to physical silicon running real hardware conditions. Allows live register inspections, memory dumps, and single-step line-by-line debugging via debug pins (SWD / JTAG).
                                 </p>
                             </div>
                         </div>
                     </div>
 
                     <!-- What is a Programmer / Flasher? -->
-                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <h3 class="text-sm font-bold text-slate-900">What is a Programmer / Flasher Hardware Debugger?</h3>
-                        <p>
-                            A **programmer (flasher)** is the hardware interface device that transfers compiled machine code (.HEX / .BIN) from your PC workstation into the microcontroller's non-volatile Flash memory[cite: 8].
+                        <p class="text-slate-600 leading-relaxed">
+                            A <strong>programmer (flasher)</strong> is the physical hardware device that transfers compiled machine code (.HEX / .BIN) from your PC workstation into the microcontroller's internal Flash memory.
                         </p>
+                        
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
                                 <strong class="text-slate-800 block mb-1">Host PC Connection</strong>
-                                <span class="text-slate-500">Connects to host PCs via standard high-speed USB ports (modern replacing legacy RS-232 serial/parallel DB25 connectors)[cite: 8].</span>
+                                <span class="text-slate-500">Connects to host PCs via standard high-speed USB ports (modern replacing legacy RS-232 serial/parallel DB25 connectors).</span>
                             </div>
                             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
                                 <strong class="text-slate-800 block mb-1">Microcontroller Interface</strong>
-                                <span class="text-slate-500">Connects to target chips using debug header pins (SWD, JTAG, ICSP, or UPDI)[cite: 8].</span>
+                                <span class="text-slate-500">Connects to target chips using standardized hardware debug pins (SWD, JTAG, ICSP, or UPDI).</span>
                             </div>
                         </div>
+
+                        <!-- Protocol Glossary -->
+                        <div class="pt-2">
+                            <h4 class="text-xs font-bold text-slate-900 uppercase tracking-wider mb-2">Hardware Debug & Programming Protocols Explained</h4>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                    <strong class="text-blue-600 block mb-1">SWD (Serial Wire Debug)</strong>
+                                    <span class="text-slate-500">A modern, 2-pin ARM protocol (Clock + Data) used to flash code and step through program execution line-by-line using minimal board pins.</span>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                    <strong class="text-blue-600 block mb-1">JTAG (Joint Test Action Group)</strong>
+                                    <span class="text-slate-500">An industry-standard 4-or-5-pin interface designed for deep hardware testing, flash programming, and multi-core chip debugging.</span>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                    <strong class="text-blue-600 block mb-1">ICSP (In-Circuit Serial Programming)</strong>
+                                    <span class="text-slate-500">Microchip's traditional serial interface used to program PIC microcontrollers while they remain soldered onto the board.</span>
+                                </div>
+                                <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                    <strong class="text-blue-600 block mb-1">UPDI (Unified Program and Debug Interface)</strong>
+                                    <span class="text-slate-500">Atmel/Microchip's single-pin protocol designed for fast, simple programming and debugging of modern 8-bit AVR microcontrollers.</span>
+                                </div>
+                            </div>
+                        </div>
+
                         <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
                             💡 Modern development boards (like STM32 Nucleo or ESP32-S3 DevKits) integrate flasher hardware directly onto the board via single USB connections (CMSIS-DAP / ST-Link).
                         </p>
@@ -621,11 +646,11 @@
                     <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100 space-y-3">
                         <h3 class="text-sm font-bold text-blue-900">Stage 1: Hardware / Software Partitioning</h3>
                         <p class="text-blue-950">
-                            When designing an embedded device, the first crucial engineering step is deciding how to distribute workload functions between **hardware components** and **software firmware routines**[cite: 8].
+                            When designing an embedded device, the first crucial engineering step is deciding how to distribute workload functions between **hardware components** and **software firmware routines**.
                         </p>
                         <ul class="list-disc list-inside text-blue-900 space-y-1 pl-1">
-                            <li><strong>Goal:</strong> Implement as many tasks as possible in **software firmware** to minimize board space and component costs[cite: 8].</li>
-                            <li><strong>Constraint:</strong> Time-critical high-speed processing or safety safety cuts may still require dedicated hardware chips to keep firmware simple and reliable[cite: 8].</li>
+                            <li><strong>Goal:</strong> Implement as many tasks as possible in **software firmware** to minimize board space and component costs.</li>
+                            <li><strong>Constraint:</strong> Time-critical high-speed processing or safety safety cuts may still require dedicated hardware chips to keep firmware simple and reliable.</li>
                         </ul>
                     </div>
 
