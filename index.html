@@ -99,7 +99,63 @@
                         </div>
                     </div>
 
-                    <h3 class="text-lg font-bold text-slate-900 pt-2">Key Terminology</h3>
+                    <!-- Detailed Explanation Added Below -->
+                    <div class="space-y-6 pt-2">
+                        <!-- Prerequisites Box -->
+                        <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
+                            <h3 class="text-sm font-bold text-slate-900 mb-2">Prerequisites for Working with Microcontrollers</h3>
+                            <p class="text-xs text-slate-500 mb-3">To build embedded devices with microcontrollers effectively, you need mastery across three primary pillars:</p>
+                            <ol class="list-decimal list-inside text-xs text-slate-700 space-y-1 font-medium">
+                                <li><strong>Internal Hardware Architecture:</strong> Knowledge of internal registers, memory layouts, and peripheral peripherals.</li>
+                                <li><strong>Programming Language:</strong> Understanding Assembly or C/C++ to direct the hardware modules.</li>
+                                <li><strong>Computer Literacy:</strong> Familiarity with IDE software, compilers, and programming interfaces.</li>
+                            </ol>
+                        </div>
+
+                        <!-- Single-Chip Microcomputer Section -->
+                        <div>
+                            <h3 class="text-base font-bold text-slate-900 mb-2">Anatomy of a Microcontroller ("Single-Chip Microcomputer")</h3>
+                            <p class="text-xs text-slate-600 mb-3">
+                                A microcontroller is frequently called a <em>single-chip microcomputer</em> because it integrates all the fundamental components of a computing platform onto a single piece of silicon:
+                            </p>
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
+                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                    <span class="font-bold text-blue-600 block mb-1">1. Central Processing Unit (CPU)</span>
+                                    <span class="text-slate-500">The brain (microprocessor) that fetches, decodes, and executes user instructions sequentially.</span>
+                                </div>
+                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                    <span class="font-bold text-blue-600 block mb-1">2. Data Memory (RAM)</span>
+                                    <span class="text-slate-500">Volatile storage used to hold runtime variables, calculation states, and dynamic flags.</span>
+                                </div>
+                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                    <span class="font-bold text-blue-600 block mb-1">3. Program Memory (Flash / ROM)</span>
+                                    <span class="text-slate-500">Non-volatile memory where compiled firmware binaries are stored permanently.</span>
+                                </div>
+                                <div class="p-3 bg-white rounded-xl border border-slate-200">
+                                    <span class="font-bold text-blue-600 block mb-1">4. Peripheral Modules</span>
+                                    <span class="text-slate-500">Integrated hardware modules (Timers, ADC, UART, GPIO) connecting the MCU to the outside world.</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Programs and Instruction Sets -->
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">What is a Program?</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    A program is an ordered sequence of machine instructions compiled to achieve a desired behavior. Instructions are stored sequentially in Program Memory (ROM) and pulled sequentially by the CPU during operation.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">What is an Instruction & Instruction Set?</h4>
+                                <p class="text-xs text-slate-600 leading-relaxed">
+                                    An <strong>instruction</strong> is a hardwired command code understood by the CPU. The total collection of all native opcodes supported by a specific processor family is called its <strong>Instruction Set</strong>.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <h3 class="text-lg font-bold text-slate-900 pt-2">Key Terminology Summary</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
                         <div class="p-3 rounded-xl border border-slate-200 bg-slate-50">
                             <span class="font-bold text-slate-800 block mb-1">Programmer / Flasher</span>
