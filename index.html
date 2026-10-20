@@ -99,7 +99,7 @@
                         </div>
                     </div>
 
-                    <!-- Detailed Explanation Added Below -->
+                    <!-- Detailed Explanation Section -->
                     <div class="space-y-6 pt-2">
                         <!-- Prerequisites Box -->
                         <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200">
@@ -112,28 +112,51 @@
                             </ol>
                         </div>
 
-                        <!-- Single-Chip Microcomputer Section -->
+                        <!-- Single-Chip Microcomputer Section & Term Breakdown -->
                         <div>
                             <h3 class="text-base font-bold text-slate-900 mb-2">Anatomy of a Microcontroller ("Single-Chip Microcomputer")</h3>
-                            <p class="text-xs text-slate-600 mb-3">
+                            <p class="text-xs text-slate-600 mb-4">
                                 A microcontroller is frequently called a <em>single-chip microcomputer</em> because it integrates all the fundamental components of a computing platform onto a single piece of silicon:
                             </p>
-                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 text-xs">
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
-                                    <span class="font-bold text-blue-600 block mb-1">1. Central Processing Unit (CPU)</span>
-                                    <span class="text-slate-500">The brain (microprocessor) that fetches, decodes, and executes user instructions sequentially.</span>
+                            
+                            <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
+                                <!-- CPU -->
+                                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                    <span class="font-bold text-blue-600 text-sm block mb-1">1. Central Processing Unit (CPU)</span>
+                                    <p class="text-slate-600 leading-relaxed mb-2">The main "brain" of the chip. It reads program instructions one by one, does math or comparisons, and tells other parts of the board what to do.</p>
                                 </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
-                                    <span class="font-bold text-blue-600 block mb-1">2. Data Memory (RAM)</span>
-                                    <span class="text-slate-500">Volatile storage used to hold runtime variables, calculation states, and dynamic flags.</span>
+
+                                <!-- RAM -->
+                                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                    <span class="font-bold text-blue-600 text-sm block mb-1">2. RAM (Random Access Memory)</span>
+                                    <p class="text-slate-600 leading-relaxed mb-2">
+                                        <strong>What is RAM?</strong> RAM stands for <em>Random Access Memory</em>. Think of it as the chip's short-term workbench.
+                                    </p>
+                                    <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                        💡 <strong>Volatile Memory:</strong> This means temporary memory. When power is turned OFF, everything stored inside RAM vanishes completely.
+                                    </p>
                                 </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
-                                    <span class="font-bold text-blue-600 block mb-1">3. Program Memory (Flash / ROM)</span>
-                                    <span class="text-slate-500">Non-volatile memory where compiled firmware binaries are stored permanently.</span>
+
+                                <!-- Flash / ROM -->
+                                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                    <span class="font-bold text-blue-600 text-sm block mb-1">3. Program Memory (Flash / ROM)</span>
+                                    <p class="text-slate-600 leading-relaxed mb-2">
+                                        <strong>What is ROM/Flash?</strong> ROM stands for <em>Read-Only Memory</em>. This is where your compiled code (firmware) is saved permanently.
+                                    </p>
+                                    <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                        💡 <strong>Non-Volatile Memory:</strong> Memory that retains its data even when power is turned off (like a USB thumb drive or SSD).
+                                    </p>
                                 </div>
-                                <div class="p-3 bg-white rounded-xl border border-slate-200">
-                                    <span class="font-bold text-blue-600 block mb-1">4. Peripheral Modules</span>
-                                    <span class="text-slate-500">Integrated hardware modules (Timers, ADC, UART, GPIO) connecting the MCU to the outside world.</span>
+
+                                <!-- Peripherals -->
+                                <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                    <span class="font-bold text-blue-600 text-sm block mb-1">4. Peripherals (Hardware Modules)</span>
+                                    <p class="text-slate-600 leading-relaxed mb-2">Built-in specialized mini-circuits inside the chip that handle real-world hardware tasks without stressing the main CPU:</p>
+                                    <ul class="list-disc list-inside text-slate-500 text-[11px] space-y-1">
+                                        <li><strong>GPIO:</strong> Input/Output pins for switches, LEDs.</li>
+                                        <li><strong>Timers:</strong> Precise pulse & delay generation.</li>
+                                        <li><strong>ADC:</strong> Converts analog sensor signals into digital numbers.</li>
+                                    </ul>
                                 </div>
                             </div>
                         </div>
@@ -143,13 +166,13 @@
                             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
                                 <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">What is a Program?</h4>
                                 <p class="text-xs text-slate-600 leading-relaxed">
-                                    A program is an ordered sequence of machine instructions compiled to achieve a desired behavior. Instructions are stored sequentially in Program Memory (ROM) and pulled sequentially by the CPU during operation.
+                                    A program is an ordered list of commands written to accomplish a task. Instructions are saved sequentially in Flash Memory and read step-by-step by the CPU.
                                 </p>
                             </div>
                             <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                                <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">What is an Instruction & Instruction Set?</h4>
+                                <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">What is an Instruction Set?</h4>
                                 <p class="text-xs text-slate-600 leading-relaxed">
-                                    An <strong>instruction</strong> is a hardwired command code understood by the CPU. The total collection of all native opcodes supported by a specific processor family is called its <strong>Instruction Set</strong>.
+                                    An <strong>instruction</strong> is a native binary code command (e.g., "Add 1 to variable", "Turn pin HIGH"). The total list of commands designed into a chip is its <strong>Instruction Set</strong>.
                                 </p>
                             </div>
                         </div>
@@ -265,8 +288,8 @@
                     <p class="text-slate-500 text-sm mt-1">Calculate labor time & cost for parameter modification across batch sizes.</p>
                 </div>
 
-                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200">
-                    <div class="mb-6">
+                <div class="bg-slate-50 p-6 rounded-2xl border border-slate-200 space-y-6">
+                    <div>
                         <label class="text-xs font-bold text-slate-700 uppercase tracking-wider block mb-2">Production Batch Volume (Units)</label>
                         <input type="range" id="sliderBatch" min="10" max="2000" step="10" value="1000" oninput="updateScalability()" class="w-full accent-blue-600">
                         <div class="flex justify-between text-xs text-slate-500 font-mono mt-1">
@@ -292,6 +315,29 @@
                             <div class="space-y-2 font-mono text-xs">
                                 <div class="flex justify-between"><span class="text-blue-700">Labor Time:</span> <span id="mcuTime" class="font-bold text-emerald-600">2.8 hours</span></div>
                                 <div class="flex justify-between"><span class="text-blue-700">Est. Cost ($30/hr):</span> <span id="mcuCost" class="font-bold text-emerald-600">$85</span></div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Gang Flasher Explanation & Image Component -->
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <div>
+                            <h3 class="text-sm font-bold text-slate-900 mb-1">What is a Gang-Flashing Tool?</h3>
+                            <p class="text-xs text-slate-600 leading-relaxed">
+                                A <strong>gang programmer (or gang flasher)</strong> is an industrial hardware device equipped with multiple chip sockets (e.g., 4, 8, or 16 ZIF sockets). It connects to a PC and programs the exact same binary firmware onto multiple microcontroller chips in parallel simultaneously within seconds.
+                            </p>
+                        </div>
+
+                        <!-- Image Container with Fallback graphic -->
+                        <div class="relative w-full rounded-xl overflow-hidden border border-slate-200 bg-slate-900 p-4 text-center">
+                            <img src="images/gang_flasher.jpg" alt="Gang Programmer Tool" class="w-full h-auto max-h-64 object-contain mx-auto rounded-lg hidden" onload="this.classList.remove('hidden'); document.getElementById('gangFallback').classList.add('hidden');" onerror="this.classList.add('hidden');">
+                            
+                            <div id="gangFallback" class="py-6 flex flex-col items-center justify-center space-y-2">
+                                <div class="p-3 bg-blue-600/20 text-blue-400 rounded-xl border border-blue-500/30">
+                                    <svg class="w-10 h-10" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
+                                </div>
+                                <span class="text-xs font-mono text-slate-300">Gang Programmer (Multi-Socket Parallel Flasher)</span>
+                                <span class="text-[10px] text-slate-500 italic">To show your image: place image file at <code>images/gang_flasher.jpg</code></span>
                             </div>
                         </div>
                     </div>
