@@ -63,7 +63,7 @@
             </button>
             <button onclick="switchTab('tab-numbers')" id="nav-tab-numbers" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
-                <span>5. Number Systems & ALU</span>
+                <span>5. Software & Systems Architecture</span>
             </button>
 
             <!-- Key Insight Callout Box -->
@@ -401,57 +401,98 @@
                 </div>
             </div>
 
-            <!-- SECTION 5: NUMBER SYSTEMS & ARITHMETIC -->
+            <!-- SECTION 5: SOFTWARE & SYSTEMS ARCHITECTURE -->
             <div id="tab-numbers" class="space-y-6 hidden">
                 <div class="border-b border-slate-100 pb-4">
-                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Hardware Data Operations</span>
-                    <h2 class="text-2xl font-bold text-slate-900">Number Systems & ALU Operations</h2>
-                    <p class="text-slate-500 text-sm mt-1">Understanding binary, hexadecimal, and low-level arithmetic execution inside the processor.</p>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Software & Toolchain Fundamentals</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Programming Languages & Development Workflow</h2>
+                    <p class="text-slate-500 text-sm mt-1">Understanding programming languages, microprocessors vs microcontrollers, and required tools.</p>
                 </div>
 
                 <div class="space-y-6 text-xs text-slate-600 leading-relaxed">
-                    <p>
-                        At the physical silicon level, microcontrollers process all data using binary voltage levels (High = 1, Low = 0). To develop embedded firmware effectively, developers must work seamlessly across multiple number systems.
-                    </p>
-
-                    <!-- Number Systems Grid -->
-                    <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
-                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                            <span class="font-bold text-slate-900 text-sm block mb-1">Decimal (Base 10)</span>
-                            <p class="text-slate-500 mb-2">Everyday human counting system using digits 0 through 9.</p>
-                            <div class="font-mono bg-white p-2 rounded-lg border border-slate-200 text-blue-600">Example: 255</div>
-                        </div>
-
-                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                            <span class="font-bold text-slate-900 text-sm block mb-1">Binary (Base 2)</span>
-                            <p class="text-slate-500 mb-2">Native electrical hardware language using only 0 and 1.</p>
-                            <div class="font-mono bg-white p-2 rounded-lg border border-slate-200 text-emerald-600">Example: 0b11111111</div>
-                        </div>
-
-                        <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                            <span class="font-bold text-slate-900 text-sm block mb-1">Hexadecimal (Base 16)</span>
-                            <p class="text-slate-500 mb-2">Compact notation for binary numbers (0-9, A-F).</p>
-                            <div class="font-mono bg-white p-2 rounded-lg border border-slate-200 text-purple-600">Example: 0xFF</div>
-                        </div>
-                    </div>
-
-                    <!-- ALU Section -->
-                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100 space-y-3">
-                        <h3 class="text-sm font-bold text-blue-900">The Arithmetic Logic Unit (ALU)</h3>
-                        <p class="text-blue-950">
-                            The <strong>ALU</strong> is the dedicated computational sub-block inside the CPU core. It executes arithmetic operations (addition, subtraction) and logical bitwise operations (AND, OR, XOR, Bit Shifts) directly on register data bytes.
+                    
+                    <!-- What is a Programming Language? -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
+                        <h3 class="text-sm font-bold text-slate-900">What is a Programming Language?</h3>
+                        <p>
+                            A programming language is the primary communication bridge between humans and the microcontroller. Just as two people require a common language to understand each other, you must use a language supported by the processor to define its tasks.
                         </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                            <div class="p-3 bg-white rounded-xl border border-blue-200">
-                                <strong class="text-slate-800 block mb-1">Arithmetic Operations</strong>
-                                <span class="text-slate-500">ADD, SUBTRACT, INCREMENT, DECREMENT.</span>
+                        <p>
+                            It establishes strict syntax rules and instruction usage guidelines. Common languages include <strong>C, Assembly, Pascal, and Delphi</strong>. In microcontroller engineering, <strong>Assembly language</strong> is crucial because it directly reflects native processor instructions.
+                        </p>
+                    </div>
+
+                    <!-- Microcontroller vs Microprocessor Comparison -->
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 mb-3">Microprocessor vs. Microcontroller Comparison</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <span class="font-bold text-slate-900 block mb-1">Microprocessor (CPU Core)</span>
+                                <p class="text-slate-500 leading-relaxed mb-2">
+                                    A standalone processing unit. To function, it <strong>requires external peripheral chips</strong> for RAM, Flash ROM, clock timing, and I/O communication ports.
+                                </p>
                             </div>
-                            <div class="p-3 bg-white rounded-xl border border-blue-200">
-                                <strong class="text-slate-800 block mb-1">Logical Operations</strong>
-                                <span class="text-slate-500">AND (masking), OR (setting bits), XOR (toggling), NOT (inverting).</span>
+                            <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-200 shadow-sm">
+                                <span class="font-bold text-blue-900 block mb-1">Microcontroller (Single-Chip Solution)</span>
+                                <p class="text-blue-950 leading-relaxed mb-2">
+                                    Integrates the CPU, memory, clock generators, and I/O ports into a <strong>single standalone silicon package</strong>—functioning as a complete, self-contained mini-computer.
+                                </p>
                             </div>
                         </div>
                     </div>
+
+                    <!-- Required Development Tools -->
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <h3 class="text-sm font-bold text-slate-900">Tools Required to Design Microcontroller Devices</h3>
+                        <p class="text-slate-500">Every embedded project involves two parallel design phases: <strong>Hardware Engineering</strong> and <strong>Software Development</strong>.</p>
+                        
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <strong class="text-slate-800 block mb-1">1. Personal Computer (PC)</strong>
+                                <span class="text-slate-500">Hosts the Integrated Development Environment (IDE), compilers, and debugging software.</span>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <strong class="text-slate-800 block mb-1">2. Text Editor</strong>
+                                <span class="text-slate-500">Used to write human-readable source code (Assembly / C).</span>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
+                                <strong class="text-slate-800 block mb-1">3. Translator / Compiler (Assembler)</strong>
+                                <span class="text-slate-500">Software that converts human-written source code into raw binary machine code (.HEX binary) suitable for flashing onto the chip.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Number Systems Grid & ALU Section -->
+                    <div class="pt-2">
+                        <h3 class="text-base font-bold text-slate-900 mb-3">Hardware Data Operations & ALU</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-3 gap-4 mb-4">
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                <span class="font-bold text-slate-900 text-sm block mb-1">Decimal (Base 10)</span>
+                                <p class="text-slate-500 mb-2">Everyday human counting system using digits 0 through 9.</p>
+                                <div class="font-mono bg-white p-2 rounded-lg border border-slate-200 text-blue-600">Example: 255</div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                <span class="font-bold text-slate-900 text-sm block mb-1">Binary (Base 2)</span>
+                                <p class="text-slate-500 mb-2">Native electrical hardware language using only 0 and 1.</p>
+                                <div class="font-mono bg-white p-2 rounded-lg border border-slate-200 text-emerald-600">Example: 0b11111111</div>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
+                                <span class="font-bold text-slate-900 text-sm block mb-1">Hexadecimal (Base 16)</span>
+                                <p class="text-slate-500 mb-2">Compact notation for binary numbers (0-9, A-F).</p>
+                                <div class="font-mono bg-white p-2 rounded-lg border border-slate-200 text-purple-600">Example: 0xFF</div>
+                            </div>
+                        </div>
+
+                        <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100 space-y-3">
+                            <h3 class="text-sm font-bold text-blue-900">The Arithmetic Logic Unit (ALU)</h3>
+                            <p class="text-blue-950">
+                                The <strong>ALU</strong> is the dedicated computational sub-block inside the CPU core. It executes arithmetic operations (addition, subtraction) and logical bitwise operations (AND, OR, XOR, Bit Shifts) directly on register data bytes.
+                            </p>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 
