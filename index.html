@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Systems: Foundations of Microcontrollers</title>
+    <title>Embedded Systems: What is a Microcontroller?</title>
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- Lucide Icons -->
@@ -36,11 +36,11 @@
             font-family: 'JetBrains Mono', monospace;
         }
         .glass {
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(12px);
         }
         .dark .glass {
-            background: rgba(15, 23, 42, 0.8);
+            background: rgba(15, 23, 42, 0.85);
             backdrop-filter: blur(12px);
         }
         ::-webkit-scrollbar {
@@ -57,13 +57,6 @@
         .dark ::-webkit-scrollbar-thumb {
             background: #334155;
         }
-        @keyframes pulse-glow {
-            0%, 100% { opacity: 0.3; }
-            50% { opacity: 0.8; }
-        }
-        .animate-glow {
-            animation: pulse-glow 2s infinite;
-        }
     </style>
 </head>
 <body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-full flex flex-col transition-colors duration-200">
@@ -76,19 +69,18 @@
                     <i data-lucide="cpu" class="w-6 h-6"></i>
                 </div>
                 <div>
-                    <h1 class="font-bold text-lg leading-tight text-slate-900 dark:text-white">Embedded Systems Mastery</h1>
-                    <p class="text-xs text-slate-500 dark:text-slate-400">Interactive Lecture 1: What is a Microcontroller?</p>
+                    <h1 class="font-bold text-lg leading-tight text-slate-900 dark:text-white">Embedded Systems Interactive</h1>
+                    <p class="text-xs text-slate-500 dark:text-slate-400">Lesson 1: The Microcontroller Paradigm Shift</p>
                 </div>
             </div>
 
-            <!-- Header Controls -->
             <div class="flex items-center gap-4">
                 <div class="hidden sm:flex items-center gap-3 bg-slate-100 dark:bg-slate-900 px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800">
-                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Progress</span>
+                    <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Lesson Completion</span>
                     <div class="w-24 bg-slate-200 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
-                        <div id="course-progress" class="bg-brand-500 h-full w-1/5 transition-all duration-300"></div>
+                        <div id="course-progress" class="bg-brand-500 h-full w-1/4 transition-all duration-300"></div>
                     </div>
-                    <span id="progress-text" class="text-xs font-bold text-brand-600 dark:text-brand-400">20%</span>
+                    <span id="progress-text" class="text-xs font-bold text-brand-600 dark:text-brand-400">25%</span>
                 </div>
 
                 <button id="theme-toggle" class="p-2 text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 rounded-xl hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
@@ -105,39 +97,34 @@
         <!-- Sidebar Navigation -->
         <aside class="w-full md:w-64 shrink-0">
             <nav class="sticky top-22 flex flex-col gap-1.5 bg-white dark:bg-slate-900 p-3 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm">
-                <div class="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Lecture Modules</div>
+                <div class="px-3 py-2 text-xs font-semibold uppercase tracking-wider text-slate-400 dark:text-slate-500">Navigation</div>
                 
-                <button onclick="switchTab('tab-objectives')" id="nav-tab-objectives" class="nav-btn active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400">
-                    <i data-lucide="target" class="w-4 h-4 shrink-0"></i>
-                    <span>1. Learning Objectives</span>
-                </button>
-
-                <button onclick="switchTab('tab-intro')" id="nav-tab-intro" class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all text-left">
+                <button onclick="switchTab('tab-concept')" id="nav-tab-concept" class="nav-btn active flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium transition-all text-left bg-brand-50 dark:bg-brand-900/30 text-brand-600 dark:text-brand-400">
                     <i data-lucide="book-open" class="w-4 h-4 shrink-0"></i>
-                    <span>2. Core Concept</span>
+                    <span>1. What is an MCU?</span>
                 </button>
 
-                <button onclick="switchTab('tab-comparison')" id="nav-tab-comparison" class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all text-left">
-                    <i data-lucide="sliders" class="w-4 h-4 shrink-0"></i>
-                    <span>3. Pulse Lab Simulator</span>
+                <button onclick="switchTab('tab-simulator')" id="nav-tab-simulator" class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all text-left">
+                    <i data-lucide="activity" class="w-4 h-4 shrink-0"></i>
+                    <span>2. Pulse Lab Simulator</span>
                 </button>
 
-                <button onclick="switchTab('tab-glossary')" id="nav-tab-glossary" class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all text-left">
-                    <i data-lucide="layers" class="w-4 h-4 shrink-0"></i>
-                    <span>4. Key Terminology</span>
+                <button onclick="switchTab('tab-calculator')" id="nav-tab-calculator" class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all text-left">
+                    <i data-lucide="calculator" class="w-4 h-4 shrink-0"></i>
+                    <span>3. Scalability Calculator</span>
                 </button>
 
                 <button onclick="switchTab('tab-quiz')" id="nav-tab-quiz" class="nav-btn flex items-center gap-3 px-3 py-2.5 rounded-xl text-sm font-medium text-slate-600 dark:text-slate-400 hover:bg-slate-50 dark:hover:bg-slate-800/50 transition-all text-left">
                     <i data-lucide="check-square" class="w-4 h-4 shrink-0"></i>
-                    <span>5. Knowledge Check</span>
+                    <span>4. Knowledge Assessment</span>
                 </button>
 
                 <div class="mt-4 pt-4 border-t border-slate-100 dark:border-slate-800 px-3">
-                    <div class="bg-brand-50/50 dark:bg-brand-900/20 p-3 rounded-xl border border-brand-100 dark:border-brand-800/40 text-xs text-slate-600 dark:text-slate-300">
+                    <div class="bg-brand-50/60 dark:bg-brand-900/20 p-3 rounded-xl border border-brand-100 dark:border-brand-800/40 text-xs text-slate-600 dark:text-slate-300">
                         <div class="font-semibold text-brand-700 dark:text-brand-300 mb-1 flex items-center gap-1.5">
-                            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i> Key Takeaway
+                            <i data-lucide="zap" class="w-3.5 h-3.5 text-amber-500"></i> Core Idea
                         </div>
-                        Traditional circuits lock logic into silicon and copper; microcontrollers lock logic into code that can be updated in seconds.
+                        In classic circuits, logic is etched into physical wiring. In microcontrollers, logic is software that can be redefined on demand.
                     </div>
                 </div>
             </nav>
@@ -146,207 +133,560 @@
         <!-- Main Content Area -->
         <main class="flex-1 min-w-0">
 
-            <!-- MODULE 1: LEARNING OBJECTIVES -->
-            <section id="tab-objectives" class="tab-content block space-y-6">
-                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm relative overflow-hidden">
-                    <div class="absolute -top-10 -right-10 w-64 h-64 bg-brand-500/10 rounded-full blur-3xl pointer-events-none"></div>
-                    
-                    <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-4">
-                        <i data-lucide="compass" class="w-3.5 h-3.5"></i> Lecture Syllabus
-                    </span>
-                    <h2 class="text-2xl sm:text-3xl font-bold tracking-tight text-slate-900 dark:text-white mb-3">Learning Objectives</h2>
-                    <p class="text-slate-600 dark:text-slate-300 text-sm sm:text-base leading-relaxed max-w-3xl">
-                        This introductory module establishes the foundational knowledge required to understand microcontrollers, their software-driven nature, internal architecture, and advantages over fixed hardware circuits.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 mt-8">
-                        <!-- Card 1 -->
-                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:border-brand-400 dark:hover:border-brand-600 transition-all group">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-9 h-9 rounded-xl bg-blue-500/10 text-blue-600 dark:text-blue-400 flex items-center justify-center font-bold text-sm group-hover:scale-105 transition-transform">
-                                    01
-                                </div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Core Terminology</h3>
-                            </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Clarify fundamental concepts: Microcontroller, Microprocessor, Program, Instruction, and Programmer/Flasher toolchain.
-                            </p>
-                        </div>
-
-                        <!-- Card 2 -->
-                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:border-brand-400 dark:hover:border-brand-600 transition-all group">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-9 h-9 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400 flex items-center justify-center font-bold text-sm group-hover:scale-105 transition-transform">
-                                    02
-                                </div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Number Systems & ALU</h3>
-                            </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Review binary and hexadecimal representations used in microcontroller register manipulation and Arithmetic Logic Unit (ALU) operations.
-                            </p>
-                        </div>
-
-                        <!-- Card 3 -->
-                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:border-brand-400 dark:hover:border-brand-600 transition-all group">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-9 h-9 rounded-xl bg-purple-500/10 text-purple-600 dark:text-purple-400 flex items-center justify-center font-bold text-sm group-hover:scale-105 transition-transform">
-                                    03
-                                </div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Internal Architecture</h3>
-                            </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Examine essential internal building blocks, including Program Memory (Flash), Data Memory (RAM), I/O Ports, Timers, and ADCs.
-                            </p>
-                        </div>
-
-                        <!-- Card 4 -->
-                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 hover:border-brand-400 dark:hover:border-brand-600 transition-all group">
-                            <div class="flex items-center gap-3 mb-3">
-                                <div class="w-9 h-9 rounded-xl bg-amber-500/10 text-amber-600 dark:text-amber-400 flex items-center justify-center font-bold text-sm group-hover:scale-105 transition-transform">
-                                    04
-                                </div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">PIC Microcontrollers</h3>
-                            </div>
-                            <p class="text-xs text-slate-500 dark:text-slate-400 leading-relaxed">
-                                Highlight key features, architectural characteristics, and functional capabilities specific to PIC microcontroller families.
-                            </p>
-                        </div>
-                    </div>
-
-                    <div class="mt-8 flex justify-end">
-                        <button onclick="switchTab('tab-intro')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm transition-all shadow-md shadow-brand-500/20">
-                            Continue to Lesson <i data-lucide="arrow-right" class="w-4 h-4"></i>
-                        </button>
-                    </div>
-                </div>
-            </section>
-
-            <!-- MODULE 2: WHAT IS A MICROCONTROLLER? -->
-            <section id="tab-intro" class="tab-content hidden space-y-6">
+            <!-- SECTION 1: CORE CONCEPT -->
+            <section id="tab-concept" class="tab-content block space-y-6">
                 <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
-                    <div>
-                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-2">
-                            Lesson 1.1
+                    <div class="border-b border-slate-100 dark:border-slate-800 pb-4">
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-3">
+                            Translated & Rewritten Lecture
                         </span>
-                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">What is a Microcontroller?</h2>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Understanding the Microcontroller</h2>
+                        <p class="text-slate-500 dark:text-slate-400 text-sm mt-1">A comparative look at software-driven embedded logic vs. fixed hardware.</p>
                     </div>
 
                     <div class="prose dark:prose-invert max-w-none text-slate-600 dark:text-slate-300 space-y-4 text-sm sm:text-base leading-relaxed">
-                        <p class="p-4 bg-slate-50 dark:bg-slate-800/60 rounded-2xl border-l-4 border-brand-500 font-medium text-slate-800 dark:text-slate-200">
-                            At its core, a <strong>microcontroller (MCU)</strong> is a single digital integrated circuit (IC) capable of performing tasks defined by instructions that you write and store inside it—unlike standard fixed-function chips.
+                        <p class="p-4 bg-brand-50/50 dark:bg-brand-950/30 rounded-2xl border-l-4 border-brand-500 font-medium text-slate-800 dark:text-slate-200">
+                            Simply put, a <strong>microcontroller</strong> is a programmable integrated circuit designed to execute user-defined instructions. Unlike standard hardwired logic chips, its behavior isn't fixed in physical silicon—it directly reflects the code loaded into its internal memory.
                         </p>
 
                         <p>
-                            To make a microcontroller perform a task, you write a <strong>program</strong> and save it into the chip's internal memory. The MCU continuously executes these programmed commands. If you need to change how the system behaves, you don't rebuild the circuit board; you simply modify your code and re-flash the chip.
+                            To command a microcontroller, you write a sequence of instructions (a <strong>program</strong>) and flash it onto the chip. Whenever product requirements change, you don't redesign the circuit board; you simply modify the software script and re-flash the processor.
                         </p>
                     </div>
 
                     <!-- Comparison Callouts -->
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6 pt-2">
-                        <div class="bg-red-50/40 dark:bg-red-950/20 p-5 rounded-2xl border border-red-200 dark:border-red-900/40 space-y-3">
+                        <div class="bg-red-50/50 dark:bg-red-950/20 p-5 rounded-2xl border border-red-200 dark:border-red-900/40 space-y-3">
                             <div class="flex items-center gap-3">
                                 <div class="p-2 rounded-xl bg-red-500/10 text-red-600 dark:text-red-400">
                                     <i data-lucide="wrench" class="w-5 h-5"></i>
                                 </div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Classic Discrete Circuit</h3>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Traditional Analog / Discrete Logic</h3>
                             </div>
-                            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                                Consider a square wave generator built with discrete timing ICs (like a 555 timer). To change the output signal's <strong>frequency</strong> or <strong>duty cycle</strong>, you must physically swap out resistors or capacitors.
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                To adjust signal frequency or duty cycle on a classic pulse generator (e.g., built around a 555 timer IC), you must physically desolder and replace timing resistors or capacitors on the circuit board.
                             </p>
                             <div class="text-xs font-semibold text-red-600 dark:text-red-400 flex items-center gap-1.5 pt-1">
-                                <i data-lucide="alert-circle" class="w-4 h-4"></i> High manual labor per board modification
+                                <i data-lucide="alert-triangle" class="w-4 h-4"></i> High manual rework costs per board
                             </div>
                         </div>
 
-                        <div class="bg-emerald-50/40 dark:bg-emerald-950/20 p-5 rounded-2xl border border-emerald-200 dark:border-emerald-900/40 space-y-3">
+                        <div class="bg-emerald-50/50 dark:bg-emerald-950/20 p-5 rounded-2xl border border-emerald-200 dark:border-emerald-900/40 space-y-3">
                             <div class="flex items-center gap-3">
                                 <div class="p-2 rounded-xl bg-emerald-500/10 text-emerald-600 dark:text-emerald-400">
                                     <i data-lucide="cpu" class="w-5 h-5"></i>
                                 </div>
-                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Microcontroller Circuit</h3>
+                                <h3 class="font-bold text-slate-900 dark:text-white text-base">Microcontroller Implementation</h3>
                             </div>
-                            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-                                On an MCU-based wave generator, frequency or duty cycle adjustments require altering a line of code in software and flashing the update over USB. The physical hardware remains completely untouched.
+                            <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+                                On an MCU-based wave generator, parameter changes require modifying a variable in your source code and downloading it via USB. The printed circuit board (PCB) remains totally untouched.
                             </p>
                             <div class="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-center gap-1.5 pt-1">
-                                <i data-lucide="check-circle-2" class="w-4 h-4"></i> Adjustments take ~5 minutes total
+                                <i data-lucide="check-circle-2" class="w-4 h-4"></i> Code update takes ~5 minutes
                             </div>
                         </div>
                     </div>
 
-                    <!-- Mass Production Comparison Box -->
-                    <div class="p-6 rounded-2xl bg-gradient-to-br from-slate-900 via-slate-800 to-slate-900 text-white space-y-4 shadow-xl">
-                        <div class="flex items-center gap-2 text-brand-400 font-semibold text-xs uppercase tracking-wider">
-                            <i data-lucide="factory" class="w-4 h-4"></i> Mass Production Scaling Scenario
-                        </div>
-                        <h3 class="text-lg font-bold">Modifying 1,000 Production Devices</h3>
-                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                            Imagine a client requests a parameter update for 1,000 already manufactured pulse generator units:
-                        </p>
-                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-xs">
-                            <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700 space-y-1">
-                                <div class="font-semibold text-red-400">Discrete Hardware: Days of Labor</div>
-                                <p class="text-slate-400">Replacing 1–2 passive components across 1,000 PCBs requires ~5,000 minutes (~83 hours) of manual soldering and inspection.</p>
-                            </div>
-                            <div class="p-3.5 bg-slate-800/80 rounded-xl border border-slate-700 space-y-1">
-                                <div class="font-semibold text-emerald-400">Microcontroller: Rapid Flashing</div>
-                                <p class="text-slate-400">Modifying code takes 5 minutes once. Flashing all 1,000 chips using automated gang-programmers takes a fraction of the time.</p>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- High-Level Applications -->
+                    <!-- Complex Applications Card -->
                     <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 bg-slate-50/50 dark:bg-slate-800/30 space-y-3">
                         <h3 class="font-bold text-slate-900 dark:text-white text-base flex items-center gap-2">
-                            <i data-lucide="sparkles" class="w-4 h-4 text-amber-500"></i> Complex Functional Capabilities
+                            <i data-lucide="layers" class="w-4 h-4 text-brand-500"></i> Beyond Simple Waveforms
                         </h3>
-                        <p class="text-xs text-slate-600 dark:text-slate-400 leading-relaxed">
-                            Beyond square wave generation, microcontrollers enable advanced, compact embedded systems that would require immense component counts in discrete logic:
+                        <p class="text-xs sm:text-sm text-slate-600 dark:text-slate-400 leading-relaxed">
+                            While square wave adjustments highlight the efficiency of MCUs, their true strength shines in complex embedded tasks where traditional discrete logic would require hundreds of components:
                         </p>
-                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-medium">
-                            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center text-slate-700 dark:text-slate-300">
-                                Alphanumeric & Graphical Displays
+                        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-medium pt-2">
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+                                Alphanumeric & TFT Displays
                             </div>
-                            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center text-slate-700 dark:text-slate-300">
-                                Serial Communication Protocols (I2C, SPI, UART)
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+                                Serial Protocols (I2C, SPI, UART)
                             </div>
-                            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center text-slate-700 dark:text-slate-300">
-                                Precision Analog Measurements (ADC)
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+                                Precise ADC Measurements
                             </div>
-                            <div class="p-2.5 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center text-slate-700 dark:text-slate-300">
-                                Real-time Sensor & Motor Control
+                            <div class="p-3 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-center shadow-sm">
+                                Automated Closed-Loop Controls
                             </div>
                         </div>
                     </div>
 
-                    <div class="flex justify-between items-center pt-2">
-                        <button onclick="switchTab('tab-objectives')" class="px-4 py-2 rounded-xl text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 text-sm font-medium transition-all">
-                            <i data-lucide="arrow-left" class="w-4 h-4 inline mr-1"></i> Objectives
-                        </button>
-                        <button onclick="switchTab('tab-comparison')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm transition-all shadow-md">
-                            Pulse Lab Simulator <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                    <div class="flex justify-end pt-2">
+                        <button onclick="switchTab('tab-simulator')" class="inline-flex items-center gap-2 px-5 py-2.5 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-sm transition-all shadow-md shadow-brand-500/20">
+                            Try Interactive Pulse Simulator <i data-lucide="arrow-right" class="w-4 h-4"></i>
                         </button>
                     </div>
                 </div>
             </section>
 
-            <!-- MODULE 3: INTERACTIVE PULSE LAB SIMULATOR -->
-            <section id="tab-comparison" class="tab-content hidden space-y-6">
+            <!-- SECTION 2: INTERACTIVE SIMULATOR -->
+            <section id="tab-simulator" class="tab-content hidden space-y-6">
                 <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
                     <div>
                         <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-2">
-                            Interactive Simulator
+                            Interactive Waveform Simulator
                         </span>
                         <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Pulse Generator: Hardware vs MCU</h2>
                         <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
-                            Experience the difference in modifying signal parameters between classic discrete hardware and a microcontroller.
+                            Simulate how changing wave parameters (frequency & duty cycle) works in discrete circuits vs. microcontroller firmware.
                         </p>
                     </div>
 
                     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
-                        <!-- Oscilloscope Screen & Visualizer -->
-                        <div class="lg:col-span-2 bg-slate-950 rounded-2xl p-5 border border-slate-800 flex flex-col justify-between space-y-4">
-                            <div class="flex items-center justify-between">
-                                <span class="text-xs font-mono text-emerald-400 flex items-center gap-2">
-                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-ping"></span>
-                                    DIG
+                        <!-- Scope Canvas -->
+                        <div class="lg:col-span-2 bg-slate-950 rounded-2xl p-4 border border-slate-800 flex flex-col justify-between space-y-3">
+                            <div class="flex items-center justify-between border-b border-slate-800 pb-2">
+                                <div class="flex items-center gap-2 text-xs font-mono text-emerald-400">
+                                    <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                                    DIGITAL OSCILLOSCOPE CH1
+                                </div>
+                                <div id="sim-status" class="text-xs font-mono text-slate-400">
+                                    Status: <span class="text-emerald-400">LIVE OUTPUT</span>
+                                </div>
+                            </div>
+
+                            <div class="relative h-48 w-full bg-slate-900/80 rounded-xl overflow-hidden border border-slate-800/80 flex items-center justify-center">
+                                <canvas id="scopeCanvas" class="w-full h-full block"></canvas>
+                                <div id="hardware-overlay" class="hidden absolute inset-0 bg-slate-950/90 backdrop-blur-sm flex flex-col items-center justify-center text-center p-4">
+                                    <i data-lucide="hammer" class="w-8 h-8 text-amber-400 animate-bounce mb-2"></i>
+                                    <p class="text-xs font-semibold text-amber-300">Desoldering & Swapping Resistors/Capacitors...</p>
+                                    <div class="w-48 bg-slate-800 h-2 rounded-full overflow-hidden mt-3 border border-slate-700">
+                                        <div id="rework-progress" class="bg-amber-400 h-full w-0 transition-all duration-75"></div>
+                                    </div>
+                                    <span class="text-[10px] text-slate-400 mt-1">Simulating hardware bench rework time</span>
+                                </div>
+                            </div>
+
+                            <div class="grid grid-cols-3 gap-2 text-center text-xs font-mono bg-slate-900/60 p-2.5 rounded-xl border border-slate-800">
+                                <div>
+                                    <span class="text-slate-500 block text-[10px]">FREQUENCY</span>
+                                    <span id="display-freq" class="text-emerald-400 font-bold">5 Hz</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block text-[10px]">DUTY CYCLE</span>
+                                    <span id="display-duty" class="text-emerald-400 font-bold">50 %</span>
+                                </div>
+                                <div>
+                                    <span class="text-slate-500 block text-[10px]">UPDATE COST</span>
+                                    <span id="display-cost" class="text-slate-200 font-bold">$0.00 (Firmware)</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Controls -->
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 flex flex-col justify-between space-y-4">
+                            <div class="space-y-4">
+                                <h3 class="font-bold text-slate-900 dark:text-white text-sm border-b border-slate-200 dark:border-slate-700 pb-2">
+                                    Circuit Architecture Mode
+                                </h3>
+
+                                <div class="grid grid-cols-2 gap-2 p-1 bg-slate-200 dark:bg-slate-900 rounded-xl text-xs font-medium">
+                                    <button onclick="setArchMode('mcu')" id="btn-mode-mcu" class="py-2 rounded-lg bg-white dark:bg-slate-800 text-brand-600 dark:text-brand-400 shadow-sm transition-all text-center">
+                                        Microcontroller
+                                    </button>
+                                    <button onclick="setArchMode('hw')" id="btn-mode-hw" class="py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 transition-all text-center">
+                                        Discrete HW
+                                    </button>
+                                </div>
+
+                                <div class="space-y-3 pt-2">
+                                    <div>
+                                        <div class="flex justify-between text-xs font-semibold mb-1">
+                                            <span>Frequency Target</span>
+                                            <span id="label-freq">5 Hz</span>
+                                        </div>
+                                        <input type="range" id="slider-freq" min="1" max="15" value="5" class="w-full accent-brand-500 cursor-pointer">
+                                    </div>
+
+                                    <div>
+                                        <div class="flex justify-between text-xs font-semibold mb-1">
+                                            <span>Duty Cycle</span>
+                                            <span id="label-duty">50%</span>
+                                        </div>
+                                        <input type="range" id="slider-duty" min="10" max="90" value="50" class="w-full accent-brand-500 cursor-pointer">
+                                    </div>
+                                </div>
+                            </div>
+
+                            <button onclick="applySignalChanges()" id="btn-apply-changes" class="w-full py-2.5 px-4 rounded-xl bg-brand-600 hover:bg-brand-700 text-white font-medium text-xs transition-all shadow-md shadow-brand-500/20 flex items-center justify-center gap-2">
+                                <i data-lucide="refresh-cw" class="w-4 h-4"></i> Apply Parameter Change
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 3: SCALABILITY CALCULATOR -->
+            <section id="tab-calculator" class="tab-content hidden space-y-6">
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-2">
+                            Mass Production Case Study
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">1,000 Units Rework Scenario</h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">
+                            A client orders a parameter update on already manufactured units. Calculate time & labor impact.
+                        </p>
+                    </div>
+
+                    <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                        <div class="bg-slate-50 dark:bg-slate-800/40 p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-4">
+                            <h3 class="font-bold text-slate-900 dark:text-white text-sm border-b border-slate-200 dark:border-slate-700 pb-2">
+                                Production Parameters
+                            </h3>
+
+                            <div class="space-y-3">
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1">Batch Production Size (Units)</label>
+                                    <input type="number" id="calc-units" value="1000" min="1" max="10000" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1">HW Rework Time per Board (Mins)</label>
+                                    <input type="number" id="calc-hw-time" value="5" min="1" max="30" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                </div>
+
+                                <div>
+                                    <label class="block text-xs font-semibold mb-1">Technician Hourly Rate ($/hr)</label>
+                                    <input type="number" id="calc-rate" value="45" min="15" max="200" class="w-full px-3 py-2 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-sm focus:outline-none focus:ring-2 focus:ring-brand-500">
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Results display -->
+                        <div class="md:col-span-2 grid grid-cols-1 sm:grid-cols-2 gap-4">
+                            <!-- HW Result -->
+                            <div class="p-5 rounded-2xl bg-red-50/50 dark:bg-red-950/20 border border-red-200 dark:border-red-900/40 flex flex-col justify-between space-y-3">
+                                <div>
+                                    <div class="flex items-center gap-2 text-red-600 dark:text-red-400 font-bold text-sm">
+                                        <i data-lucide="wrench" class="w-4 h-4"></i> Discrete Hardware Rework
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">Replacing resistors & caps across batch</p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <div>
+                                        <span class="text-xs text-slate-500 block">TOTAL LABOR TIME</span>
+                                        <span id="res-hw-hours" class="text-2xl font-bold text-red-600 dark:text-red-400">83.3 Hours</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-slate-500 block">ESTIMATED LABOR COST</span>
+                                        <span id="res-hw-cost" class="text-lg font-semibold text-slate-800 dark:text-slate-200">$3,750.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- MCU Result -->
+                            <div class="p-5 rounded-2xl bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-900/40 flex flex-col justify-between space-y-3">
+                                <div>
+                                    <div class="flex items-center gap-2 text-emerald-600 dark:text-emerald-400 font-bold text-sm">
+                                        <i data-lucide="cpu" class="w-4 h-4"></i> MCU Re-flashing
+                                    </div>
+                                    <p class="text-xs text-slate-500 dark:text-slate-400 mt-1">5-min code edit + automated gang flashing</p>
+                                </div>
+
+                                <div class="space-y-2">
+                                    <div>
+                                        <span class="text-xs text-slate-500 block">TOTAL LABOR TIME</span>
+                                        <span id="res-mcu-hours" class="text-2xl font-bold text-emerald-600 dark:text-emerald-400">1.7 Hours</span>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-slate-500 block">ESTIMATED LABOR COST</span>
+                                        <span id="res-mcu-cost" class="text-lg font-semibold text-slate-800 dark:text-slate-200">$75.00</span>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Savings Banner -->
+                            <div class="sm:col-span-2 p-4 rounded-2xl bg-brand-50 dark:bg-brand-900/30 border border-brand-200 dark:border-brand-800 flex items-center justify-between">
+                                <div class="flex items-center gap-3">
+                                    <div class="p-2 bg-brand-500 text-white rounded-xl">
+                                        <i data-lucide="trending-up" class="w-5 h-5"></i>
+                                    </div>
+                                    <div>
+                                        <span class="text-xs text-brand-700 dark:text-brand-300 font-medium">Efficiency Multiplier</span>
+                                        <p id="res-savings-text" class="text-sm font-bold text-slate-900 dark:text-white">Microcontroller flashing is ~50x faster & cheaper!</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- SECTION 4: KNOWLEDGE CHECK -->
+            <section id="tab-quiz" class="tab-content hidden space-y-6">
+                <div class="bg-white dark:bg-slate-900 p-6 sm:p-8 rounded-2xl border border-slate-200 dark:border-slate-800 shadow-sm space-y-6">
+                    <div>
+                        <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full text-xs font-semibold bg-brand-100 dark:bg-brand-900/50 text-brand-700 dark:text-brand-300 mb-2">
+                            Self Assessment
+                        </span>
+                        <h2 class="text-2xl sm:text-3xl font-bold text-slate-900 dark:text-white">Knowledge Check</h2>
+                        <p class="text-sm text-slate-500 dark:text-slate-400 mt-1">Verify your understanding of microcontrollers vs. fixed hardware.</p>
+                    </div>
+
+                    <div id="quiz-container" class="space-y-6">
+                        <!-- Q1 -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 bg-slate-50/50 dark:bg-slate-800/20">
+                            <h3 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                1. What defines a microcontroller compared to fixed digital logic chips?
+                            </h3>
+                            <div class="space-y-2 text-xs sm:text-sm">
+                                <label onclick="checkQuiz(1, 'a', false)" class="q1-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-brand-400 transition-all">
+                                    <input type="radio" name="q1" class="accent-brand-500">
+                                    <span>It operates at significantly higher voltages and power draws.</span>
+                                </label>
+                                <label onclick="checkQuiz(1, 'b', true)" class="q1-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-brand-400 transition-all">
+                                    <input type="radio" name="q1" class="accent-brand-500">
+                                    <span>Its functionality is determined by software instructions stored in memory rather than hardwired circuits.</span>
+                                </label>
+                                <label onclick="checkQuiz(1, 'c', false)" class="q1-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-brand-400 transition-all">
+                                    <input type="radio" name="q1" class="accent-brand-500">
+                                    <span>It can only process analog signals directly without conversion.</span>
+                                </label>
+                            </div>
+                            <div id="q1-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+                        </div>
+
+                        <!-- Q2 -->
+                        <div class="p-5 rounded-2xl border border-slate-200 dark:border-slate-800 space-y-3 bg-slate-50/50 dark:bg-slate-800/20">
+                            <h3 class="font-bold text-slate-900 dark:text-white text-sm sm:text-base">
+                                2. If a square wave generator built with a microcontroller needs a new frequency, what action is required?
+                            </h3>
+                            <div class="space-y-2 text-xs sm:text-sm">
+                                <label onclick="checkQuiz(2, 'a', false)" class="q2-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-brand-400 transition-all">
+                                    <input type="radio" name="q2" class="accent-brand-500">
+                                    <span>Desoldering and replacing the timing capacitor on the PCB board.</span>
+                                </label>
+                                <label onclick="checkQuiz(2, 'b', true)" class="q2-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-brand-400 transition-all">
+                                    <input type="radio" name="q2" class="accent-brand-500">
+                                    <span>Updating code parameters in software and re-flashing the program memory.</span>
+                                </label>
+                                <label onclick="checkQuiz(2, 'c', false)" class="q2-option flex items-center gap-3 p-3 rounded-xl border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 cursor-pointer hover:border-brand-400 transition-all">
+                                    <input type="radio" name="q2" class="accent-brand-500">
+                                    <span>Etching a brand new printed circuit board layout.</span>
+                                </label>
+                            </div>
+                            <div id="q2-feedback" class="hidden text-xs p-3 rounded-xl font-medium"></div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+        </main>
+    </div>
+
+    <!-- Scripts -->
+    <script>
+        // Theme Toggle Logic
+        const themeToggleBtn = document.getElementById('theme-toggle');
+        themeToggleBtn.addEventListener('click', () => {
+            document.documentElement.classList.toggle('dark');
+        });
+
+        // Lucide Icons initialization
+        lucide.createIcons();
+
+        // Navigation Switcher
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.add('hidden'));
+            document.querySelectorAll('.nav-btn').forEach(btn => {
+                btn.classList.remove('bg-brand-50', 'dark:bg-brand-900/30', 'text-brand-600', 'dark:text-brand-400');
+                btn.classList.add('text-slate-600', 'dark:text-slate-400');
+            });
+
+            document.getElementById(tabId).classList.remove('hidden');
+            const activeNav = document.getElementById('nav-' + tabId);
+            activeNav.classList.add('bg-brand-50', 'dark:bg-brand-900/30', 'text-brand-600', 'dark:text-brand-400');
+
+            // Update progress bar indicator
+            const progressMap = { 'tab-concept': '25%', 'tab-simulator': '50%', 'tab-calculator': '75%', 'tab-quiz': '100%' };
+            document.getElementById('course-progress').style.width = progressMap[tabId];
+            document.getElementById('progress-text').innerText = progressMap[tabId];
+
+            if(tabId === 'tab-simulator') {
+                setTimeout(drawScope, 50);
+            }
+        }
+
+        // Oscilloscope Simulator Logic
+        let currentArchMode = 'mcu'; // 'mcu' or 'hw'
+        let currentFreq = 5;
+        let currentDuty = 50;
+
+        let activeFreq = 5;
+        let activeDuty = 50;
+
+        const sliderFreq = document.getElementById('slider-freq');
+        const sliderDuty = document.getElementById('slider-duty');
+        const labelFreq = document.getElementById('label-freq');
+        const labelDuty = document.getElementById('label-duty');
+
+        sliderFreq.addEventListener('input', (e) => {
+            currentFreq = parseInt(e.target.value);
+            labelFreq.innerText = currentFreq + ' Hz';
+        });
+
+        sliderDuty.addEventListener('input', (e) => {
+            currentDuty = parseInt(e.target.value);
+            labelDuty.innerText = currentDuty + '%';
+        });
+
+        function setArchMode(mode) {
+            currentArchMode = mode;
+            const btnMcu = document.getElementById('btn-mode-mcu');
+            const btnHw = document.getElementById('btn-mode-hw');
+
+            if(mode === 'mcu') {
+                btnMcu.className = "py-2 rounded-lg bg-white dark:bg-slate-800 text-brand-600 dark:text-brand-400 shadow-sm transition-all text-center font-bold";
+                btnHw.className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 transition-all text-center";
+            } else {
+                btnHw.className = "py-2 rounded-lg bg-white dark:bg-slate-800 text-amber-600 dark:text-amber-400 shadow-sm transition-all text-center font-bold";
+                btnMcu.className = "py-2 rounded-lg text-slate-600 dark:text-slate-400 hover:text-slate-900 transition-all text-center";
+            }
+        }
+
+        function applySignalChanges() {
+            if(currentArchMode === 'mcu') {
+                // Instant update
+                activeFreq = currentFreq;
+                activeDuty = currentDuty;
+                updateDisplayValues(0);
+            } else {
+                // Show soldering animation for HW rework delay
+                const overlay = document.getElementById('hardware-overlay');
+                const progress = document.getElementById('rework-progress');
+                overlay.classList.remove('hidden');
+                progress.style.width = '0%';
+
+                let p = 0;
+                const interval = setInterval(() => {
+                    p += 10;
+                    progress.style.width = p + '%';
+                    if(p >= 100) {
+                        clearInterval(interval);
+                        overlay.classList.add('hidden');
+                        activeFreq = currentFreq;
+                        activeDuty = currentDuty;
+                        updateDisplayValues(3.75); // cost per rework
+                    }
+                }, 150);
+            }
+        }
+
+        function updateDisplayValues(cost) {
+            document.getElementById('display-freq').innerText = activeFreq + ' Hz';
+            document.getElementById('display-duty').innerText = activeDuty + ' %';
+            document.getElementById('display-cost').innerText = cost > 0 ? '$' + cost.toFixed(2) + ' (Parts)' : '$0.00 (Firmware)';
+        }
+
+        // Canvas Waveform Renderer
+        const canvas = document.getElementById('scopeCanvas');
+        const ctx = canvas.getContext('2d');
+        let animationPhase = 0;
+
+        function drawScope() {
+            const width = canvas.parentElement.clientWidth;
+            const height = canvas.parentElement.clientHeight;
+            canvas.width = width;
+            canvas.height = height;
+
+            ctx.clearRect(0, 0, width, height);
+
+            // Draw Grid Lines
+            ctx.strokeStyle = '#1e293b';
+            ctx.lineWidth = 1;
+            for(let x=0; x<width; x+=30) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            for(let y=0; y<height; y+=30) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+
+            // Waveform Signal
+            ctx.strokeStyle = '#10b981';
+            ctx.lineWidth = 3;
+            ctx.shadowColor = '#10b981';
+            ctx.shadowBlur = 8;
+
+            ctx.beginPath();
+            const period = width / activeFreq;
+            const highWidth = period * (activeDuty / 100);
+            const highY = height * 0.25;
+            const lowY = height * 0.75;
+
+            animationPhase = (animationPhase + 2) % period;
+
+            let startX = -animationPhase;
+            while(startX < width) {
+                ctx.moveTo(startX, lowY);
+                ctx.lineTo(startX, highY);
+                ctx.lineTo(startX + highWidth, highY);
+                ctx.lineTo(startX + highWidth, lowY);
+                ctx.lineTo(startX + period, lowY);
+                startX += period;
+            }
+            ctx.stroke();
+            ctx.shadowBlur = 0;
+
+            requestAnimationFrame(drawScope);
+        }
+
+        // Scalability Calculator Logic
+        function updateCalculations() {
+            const units = parseInt(document.getElementById('calc-units').value) || 0;
+            const timePerBoard = parseFloat(document.getElementById('calc-hw-time').value) || 0;
+            const hourlyRate = parseFloat(document.getElementById('calc-rate').value) || 0;
+
+            // HW Calculation
+            const totalHwMinutes = units * timePerBoard;
+            const totalHwHours = totalHwMinutes / 60;
+            const hwCost = totalHwHours * hourlyRate;
+
+            // MCU Calculation (Fixed 5 mins code update + automated gang flashing 5 sec/unit)
+            const totalMcuMinutes = 5 + (units * (5 / 60));
+            const totalMcuHours = totalMcuMinutes / 60;
+            const mcuCost = totalMcuHours * hourlyRate;
+
+            document.getElementById('res-hw-hours').innerText = totalHwHours.toFixed(1) + ' Hours';
+            document.getElementById('res-hw-cost').innerText = '$' + hwCost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+            document.getElementById('res-mcu-hours').innerText = totalMcuHours.toFixed(1) + ' Hours';
+            document.getElementById('res-mcu-cost').innerText = '$' + mcuCost.toLocaleString('en-US', {minimumFractionDigits: 2, maximumFractionDigits: 2});
+
+            const ratio = (hwCost / Math.max(mcuCost, 1)).toFixed(0);
+            document.getElementById('res-savings-text').innerText = `Microcontroller software re-flashing is ~${ratio}x faster and cheaper overall!`;
+        }
+
+        ['calc-units', 'calc-hw-time', 'calc-rate'].forEach(id => {
+            document.getElementById(id).addEventListener('input', updateCalculations);
+        });
+
+        // Quiz Logic
+        function checkQuiz(qNum, option, isCorrect) {
+            const feedbackEl = document.getElementById(`q${qNum}-feedback`);
+            feedbackEl.classList.remove('hidden', 'bg-emerald-100', 'text-emerald-800', 'bg-red-100', 'text-red-800');
+
+            if(isCorrect) {
+                feedbackEl.classList.add('bg-emerald-100', 'dark:bg-emerald-900/40', 'text-emerald-800', 'dark:text-emerald-300');
+                feedbackEl.innerText = 'Correct! Microcontrollers execute flexible software code stored in internal flash memory.';
+            } else {
+                feedbackEl.classList.add('bg-red-100', 'dark:bg-red-900/40', 'text-red-800', 'dark:text-red-300');
+                feedbackEl.innerText = 'Incorrect. Try again! Think about how software replaces manual component replacement.';
+            }
+        }
+
+        // Initialize Scope on Load
+        window.onload = function() {
+            drawScope();
+            updateCalculations();
+        };
+    </script>
+</body>
+</html>
