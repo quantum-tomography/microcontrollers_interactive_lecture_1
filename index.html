@@ -31,9 +31,9 @@
                 <div class="hidden sm:flex items-center space-x-2 text-xs font-medium text-slate-500">
                     <span>Lesson Completion</span>
                     <div class="w-24 bg-slate-200 h-2 rounded-full overflow-hidden">
-                        <div id="progressBar" class="bg-blue-600 h-full w-1/6 transition-all duration-300"></div>
+                        <div id="progressBar" class="bg-blue-600 h-full w-1/7 transition-all duration-300"></div>
                     </div>
-                    <span id="progressText" class="w-8 text-right">17%</span>
+                    <span id="progressText" class="w-8 text-right">14%</span>
                 </div>
             </div>
         </div>
@@ -68,6 +68,10 @@
             <button onclick="switchTab('tab-ide')" id="nav-tab-ide" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
                 <span>6. IDE, Debugging & Design Stages</span>
+            </button>
+            <button onclick="switchTab('tab-lifecycle')" id="nav-tab-lifecycle" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
+                <span>7. Design Life Cycle & Number Systems</span>
             </button>
 
             <!-- Key Insight Callout Box -->
@@ -665,6 +669,114 @@
                 </div>
             </div>
 
+            <!-- SECTION 7: DESIGN LIFE CYCLE & NUMBER SYSTEMS -->
+            <div id="tab-lifecycle" class="space-y-6 hidden">
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Embedded Engineering Methodology</span>
+                    <h2 class="text-2xl font-bold text-slate-900">Design Stages & Fundamentals of Number Systems</h2>
+                    <p class="text-slate-500 text-sm mt-1">Completing the embedded product development workflow and understanding positional vs non-positional numbering.</p>
+                </div>
+
+                <div class="space-y-6 text-xs text-slate-600 leading-relaxed">
+                    
+                    <!-- Design Lifecycle Stages 2 & 3 -->
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4">
+                        <h3 class="text-sm font-bold text-slate-900">Embedded System Design Stages (Continued)</h3>
+                        
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <span class="font-bold text-slate-900 text-sm block mb-1">Stage 2: Schematic Capture & Firmware Development</span>
+                                <p class="text-slate-600 leading-relaxed">
+                                    Designing the electrical PCB schematics, selecting passive components, and writing microcontroller firmware based on hardware/software partitioning.
+                                </p>
+                            </div>
+
+                            <div class="p-4 bg-slate-50 rounded-xl border border-slate-200">
+                                <span class="font-bold text-slate-900 text-sm block mb-1">Stage 3: Testing, Verification & Debugging</span>
+                                <p class="text-slate-600 leading-relaxed mb-2">
+                                    Verifying that the complete system meets original specifications. When faults occur, engineers must isolate whether the issue lies in physical hardware or firmware code.
+                                </p>
+                                <p class="text-slate-500 text-[11px] bg-white p-2 rounded-lg border border-slate-200">
+                                    💡 <strong>Engineering Reality:</strong> In most cases, bugs originate in software code logic. Missing a character or making a mistake in a 1,000-line program is completely normal and expected during development.
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Section 1.2: Number Systems -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-4">
+                        <div>
+                            <span class="text-[10px] font-bold text-blue-600 uppercase tracking-wider block mb-1">Lesson 1.2</span>
+                            <h3 class="text-base font-bold text-slate-900">What is a Number System?</h3>
+                            <p class="text-slate-600 mt-1">
+                                A <strong>number system</strong> is a structured method for representing numerical values using a defined set of symbols (called <em>digits</em>). The location a digit occupies within a written number is called its <strong>position or place value</strong>.
+                            </p>
+                        </div>
+
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 pt-1">
+                            <!-- Non-Positional Systems -->
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="font-bold text-slate-900 text-sm block">1. Non-Positional Number Systems</span>
+                                <p class="text-slate-600">
+                                    Each symbol represents a fixed quantitative value regardless of where it appears inside the number.
+                                </p>
+                                <div class="bg-slate-50 p-3 rounded-lg border border-slate-100 space-y-1">
+                                    <strong class="text-slate-800 block text-[11px]">Example: Roman Numerals</strong>
+                                    <p class="text-slate-500 text-[11px]">
+                                        Uses symbols <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">I (1)</code>, <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">V (5)</code>, <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">X (10)</code>, <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">L (50)</code>, <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">C (100)</code>, <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">D (500)</code>, <code class="bg-slate-200 px-1 py-0.5 rounded text-slate-800">M (1000)</code>.
+                                    </p>
+                                    <p class="text-slate-500 text-[11px]">
+                                        In the Roman numeral <strong>CCL</strong> (250), the symbol <strong>C</strong> represents 100 in both places regardless of position.
+                                    </p>
+                                </div>
+                                <p class="text-amber-700 text-[11px] font-medium bg-amber-50 p-2 rounded-lg border border-amber-200/60">
+                                    ⚠️ <strong>Major Limitation:</strong> Non-positional systems cannot easily express large numbers or perform complex mathematical computations.
+                                </p>
+                            </div>
+
+                            <!-- Positional Systems -->
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm space-y-2">
+                                <span class="font-bold text-blue-900 text-sm block">2. Positional Number Systems</span>
+                                <p class="text-slate-600">
+                                    The true value of a digit depends on both the symbol itself and its <strong>position (place)</strong> in the sequence. This enables representing infinitely large numbers using a limited set of digits.
+                                </p>
+                                <div class="bg-blue-50/50 p-3 rounded-lg border border-blue-100 space-y-1">
+                                    <strong class="text-blue-900 block text-[11px]">Base / Radix ($q$)</strong>
+                                    <p class="text-blue-950 text-[11px]">
+                                        The base ($q$) indicates how many unique digit symbols exist in the system. For example, the <strong>Decimal System</strong> uses base $q = 10$ with digits $0, 1, 2, 3, 4, 5, 6, 7, 8, 9$.
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- General Mathematical Polynomial Representation -->
+                        <div class="p-5 bg-white rounded-xl border border-slate-200 shadow-sm space-y-3">
+                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider">General Mathematical Formula for Positional Numbers</h4>
+                            <p class="text-slate-600">
+                                Any number $N$ expressed in a positional system of base $q$ can be mathematically expanded into weighted positional powers:
+                            </p>
+                            
+                            <div class="p-4 bg-slate-900 text-emerald-400 font-mono text-center rounded-xl overflow-x-auto shadow-inner text-sm my-2">
+                                $$N_{(q)} = a_n \cdot q^n + a_{n-1} \cdot q^{n-1} + \dots + a_0 \cdot q^0 + a_{-1} \cdot q^{-1} + \dots$$
+                            </div>
+
+                            <div class="grid grid-cols-1 sm:grid-cols-3 gap-2 text-[11px] text-slate-500 pt-1">
+                                <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    <strong class="text-slate-700 block">$q$ (Base / Radix)</strong> Total count of available unique digits (e.g. 10 for Decimal, 2 for Binary).
+                                </div>
+                                <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    <strong class="text-slate-700 block">$a_i$ (Digit Symbol)</strong> The specific coefficient digit occupying position index $i$.
+                                </div>
+                                <div class="bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    <strong class="text-slate-700 block">$q^i$ (Place Value)</strong> The exponential power weight tied to position index $i$.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
     </main>
 
@@ -683,7 +795,7 @@
 
         // Tab Switching
         function switchTab(tabId) {
-            ['tab-concept', 'tab-simulator', 'tab-scalability', 'tab-quiz', 'tab-numbers', 'tab-ide'].forEach(id => {
+            ['tab-concept', 'tab-simulator', 'tab-scalability', 'tab-quiz', 'tab-numbers', 'tab-ide', 'tab-lifecycle'].forEach(id => {
                 document.getElementById(id).classList.add('hidden');
                 document.getElementById('nav-' + id).classList.remove('tab-active');
                 document.getElementById('nav-' + id).classList.add('text-slate-600');
@@ -696,12 +808,13 @@
 
             // Update Progress
             const progressMap = { 
-                'tab-concept': 17, 
-                'tab-simulator': 33, 
-                'tab-scalability': 50, 
-                'tab-quiz': 67, 
-                'tab-numbers': 83, 
-                'tab-ide': 100 
+                'tab-concept': 14, 
+                'tab-simulator': 28, 
+                'tab-scalability': 43, 
+                'tab-quiz': 57, 
+                'tab-numbers': 71, 
+                'tab-ide': 85, 
+                'tab-lifecycle': 100 
             };
             document.getElementById('progressBar').style.width = progressMap[tabId] + '%';
             document.getElementById('progressText').innerText = progressMap[tabId] + '%';
