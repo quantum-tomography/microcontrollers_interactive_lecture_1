@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Embedded Systems Interactive - Microcontrollers Explained</title>
+    <title>Embedded Systems Interactive - Lecture 1</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
@@ -24,7 +24,7 @@
                 </div>
                 <div>
                     <h1 class="text-lg font-bold text-slate-900 leading-tight">Embedded Systems Interactive</h1>
-                    <p class="text-xs text-slate-500">Lesson 1: The Microcontroller Paradigm Shift</p>
+                    <p class="text-xs text-slate-500">Lesson 1: What is a Microcontroller?</p>
                 </div>
             </div>
             <div class="flex items-center space-x-4">
@@ -42,12 +42,12 @@
     <!-- Main Container -->
     <main class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8 flex-grow grid grid-cols-1 lg:grid-cols-12 gap-8">
         
-        <!-- Sidebar Navigation -->
+        <!-- Sidebar Nav -->
         <nav class="lg:col-span-3 space-y-2">
             <div class="text-xs font-semibold text-slate-400 uppercase tracking-wider px-3 mb-2">Navigation</div>
             <button onclick="switchTab('tab-concept')" id="nav-tab-concept" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm transition-all tab-active">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6.253v13m0-13C10.832 5.477 9.246 5 7.5 5S4.168 5.477 3 6.253v13C4.168 18.477 5.754 18 7.5 18s3.332.477 4.5 1.253m0-13C13.168 5.477 14.754 5 16.5 5c1.747 0 3.332.477 4.5 1.253v13C19.832 18.477 18.247 18 16.5 18c-1.746 0-3.332.477-4.5 1.253"/></svg>
-                <span>1. Core Concepts</span>
+                <span>1. What is an MCU?</span>
             </button>
             <button onclick="switchTab('tab-simulator')" id="nav-tab-simulator" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
@@ -55,7 +55,7 @@
             </button>
             <button onclick="switchTab('tab-scalability')" id="nav-tab-scalability" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
-                <span>3. Scalability Analysis</span>
+                <span>3. Scalability Calculator</span>
             </button>
             <button onclick="switchTab('tab-quiz')" id="nav-tab-quiz" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"/></svg>
@@ -67,92 +67,58 @@
                 <div class="p-4 bg-amber-50 rounded-2xl border border-amber-200/80 text-amber-900">
                     <div class="flex items-center space-x-2 font-semibold text-xs text-amber-700 uppercase tracking-wider mb-1">
                         <svg class="w-4 h-4" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M18 10a8 8 0 11-16 0 8 8 0 0116 0zm-7-4a1 1 0 11-2 0 1 1 0 012 0zM9 9a1 1 0 000 2v3a1 1 0 001 1h1a1 1 0 100-2v-3a1 1 0 00-1-1H9z" clip-rule="evenodd"/></svg>
-                        <span>Core Takeaway</span>
+                        <span>Core Idea</span>
                     </div>
-                    <p class="text-xs leading-relaxed">Discrete circuits tie functionality permanently to physical wiring. Microcontrollers replace hardwired behavior with reprogrammable software routines.</p>
+                    <p class="text-xs leading-relaxed">In classic circuits, logic is etched into physical wiring. In microcontrollers, logic is software that can be redefined on demand.</p>
                 </div>
             </div>
         </nav>
 
-        <!-- Content Section -->
+        <!-- Content Area -->
         <section class="lg:col-span-9 bg-white rounded-3xl p-6 sm:p-8 border border-slate-200/80 shadow-sm">
             
             <!-- SECTION 1: MCU CONCEPT -->
             <div id="tab-concept" class="space-y-6">
                 <div class="border-b border-slate-100 pb-4">
-                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Learning Objectives & Overview</span>
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Lesson Overview</span>
                     <h2 class="text-2xl font-bold text-slate-900">What is a Microcontroller?</h2>
-                    <p class="text-slate-500 text-sm mt-1">Understanding software-defined hardware execution and key terminology.</p>
+                    <p class="text-slate-500 text-sm mt-1">Understanding software-defined hardware execution.</p>
                 </div>
 
-                <!-- Learning Objectives Block -->
-                <div class="bg-blue-50/60 p-5 rounded-2xl border border-blue-100 space-y-3">
-                    <h3 class="text-xs font-bold text-blue-800 uppercase tracking-wider">Module Objectives</h3>
-                    <ul class="grid grid-cols-1 md:grid-cols-2 gap-3 text-xs text-blue-950">
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 font-bold">•</span>
-                            <span><strong>Fundamentals:</strong> Define microcontrollers, microprocessors, instructions, programs, and flashing tools.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 font-bold">•</span>
-                            <span><strong>Number Systems & ALU:</strong> Explore binary/hex number bases and arithmetic logic operations.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 font-bold">•</span>
-                            <span><strong>Architecture & Peripherals:</strong> Master core functional blocks, memory maps, and onboard peripherals.</span>
-                        </li>
-                        <li class="flex items-start space-x-2">
-                            <span class="text-blue-600 font-bold">•</span>
-                            <span><strong>PIC Microcontrollers:</strong> Examine specific features, register sets, and hardware characteristics of PIC chips.</span>
-                        </li>
-                    </ul>
-                </div>
-
-                <!-- Main Text Content -->
-                <div class="prose prose-slate max-w-none text-slate-600 text-sm leading-relaxed space-y-4">
-                    <p>
-                        Simply put, a <strong>microcontroller</strong> is a digital integrated circuit capable of executing custom tasks driven entirely by program instructions. Unlike fixed hardware circuits, an MCU performs whatever sequence of tasks you specify through software code stored in its internal flash memory.
-                    </p>
-
-                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-4">
+                <div class="prose prose-slate max-w-none text-slate-600 leading-relaxed space-y-4">
+                    <p>At its core, a <strong>microcontroller (MCU)</strong> is an integrated circuit designed to execute a sequence of instructions stored in its internal memory. Unlike fixed-function discrete components, an MCU acts according to the instructions provided by a user-written program.</p>
+                    
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 my-6">
                         <div class="p-4 bg-slate-50 rounded-2xl border border-slate-200">
-                            <h4 class="font-bold text-slate-900 text-xs uppercase tracking-wider mb-2">Discrete Analog/Digital Circuits</h4>
-                            <p class="text-xs text-slate-500">Operation is permanently bound to components (resistors, capacitors, 555 timers). Changing timing requires unsoldering parts on every single unit.</p>
+                            <h3 class="font-semibold text-slate-900 text-sm mb-1">Traditional Hardware</h3>
+                            <p class="text-xs text-slate-500">Functionality is permanently locked into physical resistors, capacitors, and logic gates. Adjusting timing or signals requires desoldering parts.</p>
                         </div>
-                        <div class="p-4 bg-emerald-50/60 rounded-2xl border border-emerald-200">
-                            <h4 class="font-bold text-emerald-900 text-xs uppercase tracking-wider mb-2">Microcontroller Architecture</h4>
-                            <p class="text-xs text-emerald-800">Operation is defined by firmware. Changing pulse widths or timing only requires modifying variable values in source code and re-flashing.</p>
+                        <div class="p-4 bg-blue-50 rounded-2xl border border-blue-200">
+                            <h3 class="font-semibold text-blue-900 text-sm mb-1">Microcontroller Solution</h3>
+                            <p class="text-xs text-blue-700">Functionality is governed by firmware code. Adjusting timing or parameters requires changing variables in software and reflashing the chip.</p>
                         </div>
                     </div>
 
-                    <h3 class="text-base font-bold text-slate-900 pt-2">The Pulse Generator Case Study</h3>
-                    <p>
-                        Consider a square-wave generator. If built with a traditional analog IC, changing frequency or pulse width requires replacing frequency-determining resistors or capacitors. Modify parameters on <strong>1,000 manufactured units</strong>, and you face hundreds of hours of manual labor. With an MCU, you simply edit a line of code in 5 minutes and flash the 1,000 units automatically.
-                    </p>
-
-                    <h3 class="text-base font-bold text-slate-900 pt-2">Advanced Peripheral Capabilities</h3>
-                    <p>
-                        Beyond simple pulses, microcontrollers excel at complex tasks that would require massive, impractical amounts of discrete circuitry:
-                    </p>
+                    <h3 class="text-lg font-bold text-slate-900 pt-2">Key Terminology</h3>
                     <div class="grid grid-cols-1 md:grid-cols-3 gap-3 text-xs">
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong class="block text-slate-800 mb-1">Serial & Bus Interfaces</strong>
-                            <span class="text-slate-500">Communicating with external sensors, chips, or host computers via UART, SPI, or I2C.</span>
+                        <div class="p-3 rounded-xl border border-slate-200 bg-slate-50">
+                            <span class="font-bold text-slate-800 block mb-1">Programmer / Flasher</span>
+                            <span class="text-slate-500">Hardware interface used to burn compiled machine code into MCU flash memory.</span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong class="block text-slate-800 mb-1">Display Control</strong>
-                            <span class="text-slate-500">Driving alphanumeric LCDs or graphical displays directly from digital output pins.</span>
+                        <div class="p-3 rounded-xl border border-slate-200 bg-slate-50">
+                            <span class="font-bold text-slate-800 block mb-1">Instruction Set</span>
+                            <span class="text-slate-500">The explicit set of operations (e.g., set pin high, wait) the CPU understands.</span>
                         </div>
-                        <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
-                            <strong class="block text-slate-800 mb-1">Measurement & ADC</strong>
-                            <span class="text-slate-500">Sampling external analog voltages and computing sensor data on-chip in real time.</span>
+                        <div class="p-3 rounded-xl border border-slate-200 bg-slate-50">
+                            <span class="font-bold text-slate-800 block mb-1">Microprocessor vs MCU</span>
+                            <span class="text-slate-500">MCUs integrate CPU, RAM, Flash ROM, and I/O peripherals onto a single silicon chip.</span>
                         </div>
                     </div>
                 </div>
 
                 <div class="pt-4 flex justify-end">
                     <button onclick="switchTab('tab-simulator')" class="px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-medium text-sm rounded-xl transition-all shadow-sm">
-                        Next: Interactive Pulse Simulator &rarr;
+                        Next: Try Interactive Pulse Generator &rarr;
                     </button>
                 </div>
             </div>
@@ -162,7 +128,7 @@
                 <div class="border-b border-slate-100 pb-4">
                     <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Interactive Waveform Simulator</span>
                     <h2 class="text-2xl font-bold text-slate-900">Pulse Generator: Hardware vs MCU</h2>
-                    <p class="text-slate-500 text-sm mt-1">Adjust sliders to see real-time waveform updates. Move any control to compare responsiveness.</p>
+                    <p class="text-slate-500 text-sm mt-1">Simulate how changing wave parameters (frequency & duty cycle) works in discrete circuits vs. microcontroller firmware.</p>
                 </div>
 
                 <div class="grid grid-cols-1 lg:grid-cols-12 gap-6">
@@ -174,7 +140,7 @@
                                     <span class="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></span>
                                     DIGITAL OSCILLOSCOPE CH1
                                 </span>
-                                <span id="scopeStatus" class="text-emerald-400 font-semibold">Status: LIVE OUTPUT</span>
+                                <span id="scopeStatus" class="text-emerald-400">Status: LIVE OUTPUT</span>
                             </div>
                             
                             <div class="relative w-full h-56 bg-slate-900/60 rounded-xl overflow-hidden border border-slate-800/80">
@@ -227,8 +193,8 @@
                         </div>
 
                         <div class="space-y-2">
-                            <p id="actionLog" class="text-[11px] text-slate-600 text-center italic min-h-[36px] flex items-center justify-center bg-white p-2.5 rounded-xl border border-slate-200">
-                                Real-time update enabled. Drag any slider above.
+                            <p id="actionLog" class="text-[11px] text-slate-500 text-center italic min-h-[32px] flex items-center justify-center bg-white p-2 rounded-xl border border-slate-200">
+                                Real-time update enabled. Move any slider above.
                             </p>
                         </div>
                     </div>
@@ -358,7 +324,7 @@
             navBtn.classList.add('tab-active');
             navBtn.classList.remove('text-slate-600');
 
-            // Update Progress Bar
+            // Update Progress
             const progressMap = { 'tab-concept': 25, 'tab-simulator': 50, 'tab-scalability': 75, 'tab-quiz': 100 };
             document.getElementById('progressBar').style.width = progressMap[tabId] + '%';
             document.getElementById('progressText').innerText = progressMap[tabId] + '%';
@@ -413,7 +379,7 @@
                     document.getElementById('dispFreq').innerText = activeFreq + " Hz";
                     document.getElementById('dispDuty').innerText = activeDuty + " %";
                     status.innerText = "Status: LIVE OUTPUT";
-                    status.className = "text-emerald-400 font-semibold";
+                    status.className = "text-emerald-400";
                     log.innerText = "Desoldering complete! New hardware components installed.";
                     isSimulatingHWMod = false;
                 }, 800);
@@ -462,7 +428,7 @@
                 res.innerText = "Excellent! You scored 100%. You understand the flexibility and programming workflow of microcontrollers!";
             } else {
                 res.className = "p-4 rounded-xl text-xs font-semibold bg-red-100 text-red-800 block";
-                res.innerText = "Some answers were incorrect. Review the 'Core Concepts' section and try again!";
+                res.innerText = "Some answers were incorrect. Review the 'What is an MCU?' section and try again!";
             }
         }
 
@@ -541,7 +507,7 @@
                 ctx.stroke();
                 ctx.shadowBlur = 0;
             } else {
-                // Noise during HW desoldering simulation
+                // Noise during HW desoldering rework
                 ctx.strokeStyle = '#f59e0b';
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
