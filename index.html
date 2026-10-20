@@ -179,7 +179,7 @@
                                         <span class="text-slate-600">Frequency Target</span>
                                         <span id="valFreq" class="font-mono text-slate-900 font-bold">3 Hz</span>
                                     </div>
-                                    <input type="range" id="sliderFreq" min="1" max="10" value="3" class="w-full accent-blue-600">
+                                    <input type="range" id="sliderFreq" min="1" max="10" value="3" oninput="onSliderChange()" class="w-full accent-blue-600">
                                 </div>
 
                                 <div>
@@ -187,18 +187,14 @@
                                         <span class="text-slate-600">Duty Cycle</span>
                                         <span id="valDuty" class="font-mono text-slate-900 font-bold">70%</span>
                                     </div>
-                                    <input type="range" id="sliderDuty" min="10" max="90" value="70" class="w-full accent-blue-600">
+                                    <input type="range" id="sliderDuty" min="10" max="90" value="70" oninput="onSliderChange()" class="w-full accent-blue-600">
                                 </div>
                             </div>
                         </div>
 
                         <div class="space-y-2">
-                            <button id="btnApply" onclick="applyChanges()" class="w-full py-3 bg-blue-600 hover:bg-blue-700 text-white text-xs font-bold rounded-xl shadow-md transition-all flex items-center justify-center space-x-2">
-                                <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg>
-                                <span>Apply Parameter Change</span>
-                            </button>
-                            <p id="actionLog" class="text-[11px] text-slate-500 text-center italic min-h-[32px] flex items-center justify-center">
-                                Parameters updated instantaneously via MCU memory.
+                            <p id="actionLog" class="text-[11px] text-slate-500 text-center italic min-h-[32px] flex items-center justify-center bg-white p-2 rounded-xl border border-slate-200">
+                                Real-time update enabled. Move any slider above.
                             </p>
                         </div>
                     </div>
@@ -309,11 +305,11 @@
         let activeFreq = 3;
         let activeDuty = 70;
         let isSimulatingHWMod = false;
+        let hwTimeout = null;
 
         // Canvas & Oscillation State
         let canvas, ctx;
         let phase = 0;
-        let animationFrameId = null;
 
         // Tab Switching
         function switchTab(tabId) {
@@ -349,55 +345,52 @@
             if (mode === 'mcu') {
                 btnMCU.className = "py-2 text-xs font-bold rounded-lg transition-all bg-white text-blue-600 shadow-sm";
                 btnHW.className = "py-2 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900";
-                log.innerText = "Mode: Microcontroller (Firmware parameters)";
+                log.innerText = "Mode: Microcontroller (Instant firmware slider response)";
                 document.getElementById('dispCost').innerText = "$0.00 (Firmware)";
             } else {
                 btnHW.className = "py-2 text-xs font-bold rounded-lg transition-all bg-white text-amber-600 shadow-sm";
                 btnMCU.className = "py-2 text-xs font-bold rounded-lg transition-all text-slate-600 hover:text-slate-900";
-                log.innerText = "Mode: Discrete Hardware (Requires resistor/capacitor desoldering)";
+                log.innerText = "Mode: Discrete Hardware (Desoldering delay on slider change)";
                 document.getElementById('dispCost').innerText = "$2.50 (Hardware Rework)";
             }
         }
 
-        // Apply Slider Controls
-        function applyChanges() {
+        // Live Slider Listener (Triggered continuously on drag)
+        function onSliderChange() {
             const freq = parseInt(document.getElementById('sliderFreq').value);
             const duty = parseInt(document.getElementById('sliderDuty').value);
+            
+            document.getElementById('valFreq').innerText = freq + " Hz";
+            document.getElementById('valDuty').innerText = duty + "%";
+
             const log = document.getElementById('actionLog');
             const status = document.getElementById('scopeStatus');
 
             if (currentMode === 'hw') {
                 isSimulatingHWMod = true;
-                status.innerText = "Status: REWORKING COMPONENTS...";
+                status.innerText = "Status: REWORKING HARDWARE...";
                 status.className = "text-amber-400 font-bold animate-pulse";
                 log.innerText = "Desoldering old components and replacing resistors/capacitors...";
                 
-                setTimeout(() => {
+                if (hwTimeout) clearTimeout(hwTimeout);
+                hwTimeout = setTimeout(() => {
                     activeFreq = freq;
                     activeDuty = duty;
                     document.getElementById('dispFreq').innerText = activeFreq + " Hz";
                     document.getElementById('dispDuty').innerText = activeDuty + " %";
                     status.innerText = "Status: LIVE OUTPUT";
                     status.className = "text-emerald-400";
-                    log.innerText = "Hardware component rework complete! Pulse generator output adjusted.";
+                    log.innerText = "Desoldering complete! New hardware components installed.";
                     isSimulatingHWMod = false;
-                }, 1200);
+                }, 800);
             } else {
                 activeFreq = freq;
                 activeDuty = duty;
                 document.getElementById('dispFreq').innerText = activeFreq + " Hz";
                 document.getElementById('dispDuty').innerText = activeDuty + " %";
-                log.innerText = "Firmware parameter updated instantly in RAM/Flash!";
+                log.innerText = "Firmware parameter updated instantly!";
             }
         }
-
-        // Real-time slider feedback labels
-        document.getElementById('sliderFreq').addEventListener('input', (e) => {
-            document.getElementById('valFreq').innerText = e.target.value + " Hz";
-        });
-        document.getElementById('sliderDuty').addEventListener('input', (e) => {
-            document.getElementById('valDuty').innerText = e.target.value + "%";
-        });
 
         // Scalability Calculator Logic
         function updateScalability() {
@@ -445,7 +438,6 @@
             if (!canvas) return;
             ctx = canvas.getContext('2d');
 
-            // Handle retina scaling
             const rect = canvas.getBoundingClientRect();
             canvas.width = rect.width * window.devicePixelRatio;
             canvas.height = rect.height * window.devicePixelRatio;
@@ -501,8 +493,6 @@
                 const dutyRatio = activeDuty / 100;
 
                 ctx.beginPath();
-                let currentX = 0;
-                let isHigh = true;
 
                 for (let x = 0; x < width; x += 1) {
                     const cyclePos = ((x + phase * 20) % periodPixels) / periodPixels;
@@ -515,9 +505,9 @@
                     }
                 }
                 ctx.stroke();
-                ctx.shadowBlur = 0; // Reset glow
+                ctx.shadowBlur = 0;
             } else {
-                // Static Noise during HW Desoldering Rework Simulation
+                // Noise during HW desoldering rework
                 ctx.strokeStyle = '#f59e0b';
                 ctx.lineWidth = 1.5;
                 ctx.beginPath();
