@@ -31,9 +31,9 @@
                 <div class="hidden sm:flex items-center space-x-2 text-xs font-medium text-slate-500">
                     <span>Lesson Completion</span>
                     <div class="w-24 bg-slate-200 h-2 rounded-full overflow-hidden">
-                        <div id="progressBar" class="bg-blue-600 h-full w-1/5 transition-all duration-300"></div>
+                        <div id="progressBar" class="bg-blue-600 h-full w-1/6 transition-all duration-300"></div>
                     </div>
-                    <span id="progressText" class="w-8 text-right">20%</span>
+                    <span id="progressText" class="w-8 text-right">17%</span>
                 </div>
             </div>
         </div>
@@ -64,6 +64,10 @@
             <button onclick="switchTab('tab-numbers')" id="nav-tab-numbers" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
                 <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 20l4-16m2 16l4-16M6 9h14M4 15h14"/></svg>
                 <span>5. Software & Systems Architecture</span>
+            </button>
+            <button onclick="switchTab('tab-ide')" id="nav-tab-ide" class="w-full flex items-center space-x-3 px-4 py-3 rounded-xl font-medium text-sm text-slate-600 hover:bg-slate-100 transition-all">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M10 20l4-16m4 4l4 4-4 4M6 16l-4-4 4-4"/></svg>
+                <span>6. IDE, Debugging & Design Stages</span>
             </button>
 
             <!-- Key Insight Callout Box -->
@@ -533,6 +537,101 @@
                 </div>
             </div>
 
+            <!-- SECTION 6: IDE, DEBUGGING & DESIGN STAGES -->
+            <div id="tab-ide" class="space-y-6 hidden">
+                <div class="border-b border-slate-100 pb-4">
+                    <span class="text-xs font-bold text-blue-600 uppercase tracking-wider">Development Environment & Process</span>
+                    <h2 class="text-2xl font-bold text-slate-900">IDEs, Debugging Tools & Hardware/Software Partitioning</h2>
+                    <p class="text-slate-500 text-sm mt-1">Understanding Integrated Development Environments, flashing hardware, and embedded design workflows.</p>
+                </div>
+
+                <div class="space-y-6 text-xs text-slate-600 leading-relaxed">
+                    
+                    <!-- What is an IDE? -->
+                    <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
+                        <h3 class="text-sm font-bold text-slate-900">What is an Integrated Development Environment (IDE)?</h3>
+                        <p>
+                            An <strong>Integrated Development Environment (IDE)</strong> bundles all essential software development tools—the text code editor, compiler, assembler, simulator, and programmer interface—into a single unified software suite[cite: 8].
+                        </p>
+                        <p>
+                            Microcontroller manufacturers typically provide free, tailored IDEs optimized for their chip architectures[cite: 8]. Modern popular choices include:
+                        </p>
+
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 block mb-1">VS Code + PlatformIO</strong>
+                                <span class="text-slate-500">Universal modern ecosystem supporting cross-platform ARM, RISC-V, ESP32, and AVR microcontrollers.</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 block mb-1">MPLAB X IDE</strong>
+                                <span class="text-slate-500">Official suite provided freely by Microchip for PIC, AVR, and SAM series microcontrollers[cite: 8].</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 block mb-1">STM32CubeIDE</strong>
+                                <span class="text-slate-500">STMicroelectronics' free Eclipse-based suite for 32-bit ARM Cortex-M chips with peripheral auto-code generation.</span>
+                            </div>
+                            <div class="p-3 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 block mb-1">Keil uVision / IAR Embedded Workbench</strong>
+                                <span class="text-slate-500">High-performance commercial IDEs widely utilized in mission-critical industrial automotive firmware.</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Simulators vs Emulators -->
+                    <div>
+                        <h3 class="text-base font-bold text-slate-900 mb-3">Testing Code: Simulators vs. In-Circuit Debuggers / Emulators</h3>
+                        <div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <span class="font-bold text-slate-900 block mb-1">1. Software Simulator</span>
+                                <p class="text-slate-500 leading-relaxed">
+                                    Executes a virtual software model of the target MCU entirely inside the host PC[cite: 8]. Excellent for validating mathematical algorithms and logic loops without requiring physical circuit boards[cite: 8].
+                                </p>
+                            </div>
+                            <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-200 shadow-sm">
+                                <span class="font-bold text-blue-900 block mb-1">2. Hardware Emulator / In-Circuit Debugger (ICD)</span>
+                                <p class="text-blue-950 leading-relaxed">
+                                    Connects the PC IDE directly to physical silicon running real hardware conditions[cite: 8]. Allows live register inspections, memory dumps, and single-step line-by-line debugging via debug pins (SWD / JTAG)[cite: 8].
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- What is a Programmer / Flasher? -->
+                    <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-3">
+                        <h3 class="text-sm font-bold text-slate-900">What is a Programmer / Flasher Hardware Debugger?</h3>
+                        <p>
+                            A **programmer (flasher)** is the hardware interface device that transfers compiled machine code (.HEX / .BIN) from your PC workstation into the microcontroller's non-volatile Flash memory[cite: 8].
+                        </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <strong class="text-slate-800 block mb-1">Host PC Connection</strong>
+                                <span class="text-slate-500">Connects to host PCs via standard high-speed USB ports (modern replacing legacy RS-232 serial/parallel DB25 connectors)[cite: 8].</span>
+                            </div>
+                            <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
+                                <strong class="text-slate-800 block mb-1">Microcontroller Interface</strong>
+                                <span class="text-slate-500">Connects to target chips using debug header pins (SWD, JTAG, ICSP, or UPDI)[cite: 8].</span>
+                            </div>
+                        </div>
+                        <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                            💡 Modern development boards (like STM32 Nucleo or ESP32-S3 DevKits) integrate flasher hardware directly onto the board via single USB connections (CMSIS-DAP / ST-Link).
+                        </p>
+                    </div>
+
+                    <!-- System Design Stage 1 -->
+                    <div class="p-5 bg-blue-50/60 rounded-2xl border border-blue-100 space-y-3">
+                        <h3 class="text-sm font-bold text-blue-900">Stage 1: Hardware / Software Partitioning</h3>
+                        <p class="text-blue-950">
+                            When designing an embedded device, the first crucial engineering step is deciding how to distribute workload functions between **hardware components** and **software firmware routines**[cite: 8].
+                        </p>
+                        <ul class="list-disc list-inside text-blue-900 space-y-1 pl-1">
+                            <li><strong>Goal:</strong> Implement as many tasks as possible in **software firmware** to minimize board space and component costs[cite: 8].</li>
+                            <li><strong>Constraint:</strong> Time-critical high-speed processing or safety safety cuts may still require dedicated hardware chips to keep firmware simple and reliable[cite: 8].</li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
         </section>
     </main>
 
@@ -551,7 +650,7 @@
 
         // Tab Switching
         function switchTab(tabId) {
-            ['tab-concept', 'tab-simulator', 'tab-scalability', 'tab-quiz', 'tab-numbers'].forEach(id => {
+            ['tab-concept', 'tab-simulator', 'tab-scalability', 'tab-quiz', 'tab-numbers', 'tab-ide'].forEach(id => {
                 document.getElementById(id).classList.add('hidden');
                 document.getElementById('nav-' + id).classList.remove('tab-active');
                 document.getElementById('nav-' + id).classList.add('text-slate-600');
@@ -563,7 +662,14 @@
             navBtn.classList.remove('text-slate-600');
 
             // Update Progress
-            const progressMap = { 'tab-concept': 20, 'tab-simulator': 40, 'tab-scalability': 60, 'tab-quiz': 80, 'tab-numbers': 100 };
+            const progressMap = { 
+                'tab-concept': 17, 
+                'tab-simulator': 33, 
+                'tab-scalability': 50, 
+                'tab-quiz': 67, 
+                'tab-numbers': 83, 
+                'tab-ide': 100 
+            };
             document.getElementById('progressBar').style.width = progressMap[tabId] + '%';
             document.getElementById('progressText').innerText = progressMap[tabId] + '%';
 
