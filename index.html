@@ -111,7 +111,7 @@
                             <p class="text-xs text-slate-500 mb-3">To build embedded devices with microcontrollers effectively, you need mastery across three primary pillars:</p>
                             <ol class="list-decimal list-inside text-xs text-slate-700 space-y-1 font-medium">
                                 <li><strong>Internal Hardware Architecture:</strong> Knowledge of internal registers, memory layouts, and peripheral peripherals.</li>
-                                <li><strong>Programming Language:</strong> Understanding Assembly or C/C++ to direct the hardware modules.</li>
+                                <li><strong>Programming Language:</strong> Understanding Embedded C/C++, Rust, or Assembly to direct hardware modules.</li>
                                 <li><strong>Computer Literacy:</strong> Familiarity with IDE software, compilers, and programming interfaces.</li>
                             </ol>
                         </div>
@@ -415,11 +415,48 @@
                     <div class="bg-slate-50 p-5 rounded-2xl border border-slate-200 space-y-3">
                         <h3 class="text-sm font-bold text-slate-900">What is a Programming Language?</h3>
                         <p>
-                            A programming language is the primary communication bridge between humans and the microcontroller. Just as two people require a common language to understand each other, you must use a language supported by the processor to define its tasks.
+                            A programming language is the primary communication bridge between humans and the microcontroller[cite: 7]. Just as two people require a common language to understand each other, you must use a language supported by the processor to define its tasks[cite: 7].
                         </p>
                         <p>
-                            It establishes strict syntax rules and instruction usage guidelines. Common languages include <strong>C, Assembly, Pascal, and Delphi</strong>. In microcontroller engineering, <strong>Assembly language</strong> is crucial because it directly reflects native processor instructions.
+                            It establishes strict syntax rules and instruction usage guidelines[cite: 7]. Today, modern embedded engineering relies on a spectrum of specialized languages:
                         </p>
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 text-sm block mb-1">C / Embedded C</strong>
+                                <p class="text-slate-600 leading-relaxed mb-2">The undisputed industry standard for microcontroller programming.</p>
+                                <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    💡 Provides direct access to hardware memory and registers with zero performance overhead, producing compact, lightning-fast code.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 text-sm block mb-1">C++</strong>
+                                <p class="text-slate-600 leading-relaxed mb-2">An extension of C introducing object-oriented features (classes, templates).</p>
+                                <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    💡 Widely used in complex embedded systems, robotics, and real-time operating systems (RTOS) to manage large codebases without losing execution speed.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 text-sm block mb-1">Rust</strong>
+                                <p class="text-slate-600 leading-relaxed mb-2">A modern systems programming language built specifically for safety.</p>
+                                <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    💡 Guarantees memory safety and thread safety at compile time, eliminating bugs (like buffer overflows) without needing a heavy runtime.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
+                                <strong class="text-blue-600 text-sm block mb-1">MicroPython / CircuitPython</strong>
+                                <p class="text-slate-600 leading-relaxed mb-2">Lightweight implementations of Python optimized to run directly on chips.</p>
+                                <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    💡 Allows developers to write human-friendly, readable scripts for fast prototyping without compiling binary files beforehand.
+                                </p>
+                            </div>
+                            <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm sm:col-span-2">
+                                <strong class="text-slate-900 text-sm block mb-1">Assembly Language</strong>
+                                <p class="text-slate-600 leading-relaxed mb-2">The lowest-level human-readable language, mapping 1:1 to native CPU instruction opcodes[cite: 7].</p>
+                                <p class="text-slate-500 text-[11px] bg-slate-50 p-2 rounded-lg border border-slate-100">
+                                    💡 Offers absolute control over timing and silicon hardware, making it essential for critical startup bootloaders, interrupt vectors, and micro-second delays.
+                                </p>
+                            </div>
+                        </div>
                     </div>
 
                     <!-- Microcontroller vs Microprocessor Comparison -->
@@ -429,13 +466,13 @@
                             <div class="p-4 bg-white rounded-xl border border-slate-200 shadow-sm">
                                 <span class="font-bold text-slate-900 block mb-1">Microprocessor (CPU Core)</span>
                                 <p class="text-slate-500 leading-relaxed mb-2">
-                                    A standalone processing unit. To function, it <strong>requires external peripheral chips</strong> for RAM, Flash ROM, clock timing, and I/O communication ports.
+                                    A standalone processing unit[cite: 7]. To function, it <strong>requires external peripheral chips</strong> for RAM, Flash ROM, clock timing, and I/O communication ports[cite: 7].
                                 </p>
                             </div>
                             <div class="p-4 bg-blue-50/60 rounded-xl border border-blue-200 shadow-sm">
                                 <span class="font-bold text-blue-900 block mb-1">Microcontroller (Single-Chip Solution)</span>
                                 <p class="text-blue-950 leading-relaxed mb-2">
-                                    Integrates the CPU, memory, clock generators, and I/O ports into a <strong>single standalone silicon package</strong>—functioning as a complete, self-contained mini-computer.
+                                    Integrates the CPU, memory, clock generators, and I/O ports into a <strong>single standalone silicon package</strong>—functioning as a complete, self-contained mini-computer[cite: 7].
                                 </p>
                             </div>
                         </div>
@@ -444,20 +481,20 @@
                     <!-- Required Development Tools -->
                     <div class="p-5 bg-white rounded-2xl border border-slate-200 shadow-sm space-y-4">
                         <h3 class="text-sm font-bold text-slate-900">Tools Required to Design Microcontroller Devices</h3>
-                        <p class="text-slate-500">Every embedded project involves two parallel design phases: <strong>Hardware Engineering</strong> and <strong>Software Development</strong>.</p>
+                        <p class="text-slate-500">Every embedded project involves two parallel design phases: <strong>Hardware Engineering</strong> and <strong>Software Development</strong>[cite: 7].</p>
                         
                         <div class="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-1">
                             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
                                 <strong class="text-slate-800 block mb-1">1. Personal Computer (PC)</strong>
-                                <span class="text-slate-500">Hosts the Integrated Development Environment (IDE), compilers, and debugging software.</span>
+                                <span class="text-slate-500">Hosts the Integrated Development Environment (IDE), compilers, and debugging software[cite: 7].</span>
                             </div>
                             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200">
                                 <strong class="text-slate-800 block mb-1">2. Text Editor</strong>
-                                <span class="text-slate-500">Used to write human-readable source code (Assembly / C).</span>
+                                <span class="text-slate-500">Used to write human-readable source code (C / C++ / Rust / Assembly)[cite: 7].</span>
                             </div>
                             <div class="p-3 bg-slate-50 rounded-xl border border-slate-200 sm:col-span-2">
                                 <strong class="text-slate-800 block mb-1">3. Translator / Compiler (Assembler)</strong>
-                                <span class="text-slate-500">Software that converts human-written source code into raw binary machine code (.HEX binary) suitable for flashing onto the chip.</span>
+                                <span class="text-slate-500">Software that converts human-written source code into raw binary machine code (.HEX binary) suitable for flashing onto the chip[cite: 7].</span>
                             </div>
                         </div>
                     </div>
